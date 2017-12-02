@@ -1,0 +1,379 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: 0export</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="open">
+<a href="tools.html">Tool reference 
+      </a><ul>
+<li class="leaf"><a href="0bootstrap.html">0bootstrap 
+      </a></li>
+<li class="closed"><a href="0compile.html">0compile 
+      </a></li>
+<li class="leaf"><a href="ebox.html">ebox 
+      </a></li>
+<li class="leaf"><a href="0export.html" class="selected">0export 
+      </a></li>
+<li class="leaf"><a href="feedlint.html">FeedLint 
+      </a></li>
+<li class="leaf"><a href="make-headers.html">Make-headers 
+      </a></li>
+<li class="leaf"><a href="0mirror.html">0mirror 
+      </a></li>
+<li class="leaf"><a href="pkg2zero.html">pkg2zero 
+      </a></li>
+<li class="leaf"><a href="0publish.html">0publish 
+      </a></li>
+<li class="closed"><a href="0release.html">0release 
+      </a></li>
+<li class="leaf"><a href="0share.html">0share 
+      </a></li>
+<li class="leaf"><a href="0template.html">0template 
+      </a></li>
+<li class="leaf"><a href="0repo.html">0repo 
+      </a></li>
+<li class="leaf"><a href="0test.html">0test 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<table><tr>
+<td style="vertical-align: top">
+<h2>0export</h2>
+
+<p>
+<b>0export</b> creates self-installing bundles for distribution on CD, etc
+</p>
+
+<p>
+Normally, a program is run by passing its name (a URI) to the 0launch
+command. This downloads the appropriate feeds, chooses a set of
+implementations (a version of the program, along with any libraries it
+needs) and downloads them too.
+</p>
+
+<p>
+However, it is sometimes useful to bundle a program and its libraries
+together on a CD (for example) so that it can be used on machines without a
+network connection, or where the network is very slow. It is also useful for
+archival purposes, in case the original web-sites supplying required
+libraries become unavailable.
+</p>
+
+</td>
+<td style="vertical-align: top"><div class="program"><table>
+<tr>
+<th>Name</th>
+<td>0export</td>
+</tr>
+<tr>
+<th>Maintainer</th>
+<td>Thomas Leonard</td>
+</tr>
+<tr>
+<th>License</th>
+<td>GNU General Public License</td>
+</tr>
+<tr>
+<th>Run it</th>
+<td><a href="http://0install.net/tools/0export.xml">Zero Install feed</a></td>
+</tr>
+<tr>
+<th>SCM</th>
+<td><a href="http://repo.or.cz/w/0export.git">GIT repository</a></td>
+</tr>
+</table></div></td>
+</tr></table>
+
+<p>
+0export takes the URI of a program and creates a "setup.sh" file; a
+self-extracting archive containing everything needed to run the program.
+This file can be executed on a machine without a network connection to
+install or run the program.
+</p>
+
+<p>
+Unlike the bundles created by the related <a href="http://roscidus.com/desktop/Zero2Bundle">Zero2Bundle</a> program, programs
+installed using setup.sh are added to the Zero Install cache and are
+therefore still <a href="sharing.html">shared between users</a>, and
+will get updates over the web where possible.
+</p>
+
+<ol class="toc">
+<li><a href="#idm28597968797856">Using a 0export package</a></li>
+<li><a href="#idm28597968789776">Current status</a></li>
+<li><a href="#idm28597968788832">Installing 0export</a></li>
+<li><a href="#idm28597968787152">Creating a setup.sh for your program</a></li>
+<li><a href="#idm28597968784576">Format of the setup.sh</a></li>
+<li><a href="#idm28597968779968">Testing</a></li>
+<li><a href="#idm28597968772800">Support for multiple architectures or multiple applications in one bundle</a></li>
+<li><a href="#idm28597968769968">FAQ</a></li>
+</ol>
+
+<h2 id="idm28597968797856">Using a 0export package</h2>
+
+<p>Open the file with your file manager, or run "<b>sh setup.sh</b>" in a terminal:</p>
+
+<p style="text-align: center">
+  <img width="536" height="323" src="screens/0export-run.png" alt="Running a 0export setup file">
+</p>
+
+<p>The archive will unpack and run:</p>
+
+<p style="text-align: center">
+  <img width="399" height="162" src="screens/0export-unpack.png" alt="The self-extracting package unpacks itself">
+</p>
+
+<p>You can add the program to your menus or run it directly.</p>
+
+<p style="text-align: center">
+  <img width="399" height="162" src="screens/0export-actions.png" alt="Optional actions">
+</p>
+
+<h2 id="idm28597968789776">Current status</h2>
+
+<p>
+This program is not yet complete. In particular, adding the program to the user's menus only works if the user
+already has Zero Install itself installed.
+</p>
+
+<h2 id="idm28597968788832">Installing 0export</h2>
+
+<p>
+You can download <b>0export</b> and create a short-cut to it in the usual way:
+</p>
+
+<pre>$ 0install add 0export http://0install.net/tools/0export.xml</pre>
+
+<h2 id="idm28597968787152">Creating a setup.sh for your program</h2>
+
+<p>
+Run 0export, passing in the name of the installer file to create and the name (URI)
+of the main program. For example, to create an installer for Edit:
+</p>
+
+<pre>
+$ 0export setup.sh http://rox.sourceforge.net/2005/interfaces/Edit
+</pre>
+
+<p>
+The resulting setup.sh file can be copied to a CD and run on another machine. This
+machine does not need a network connection. It also does not need to have Zero Install
+installed on it before-hand.
+</p>
+
+<p>
+However, if the machine does have a network connection then the user will be notified
+of updates in the usual way.
+</p>
+
+<h2 id="idm28597968784576">Format of the setup.sh</h2>
+
+<p>
+The bulk of the setup.sh file is an archive containing:
+</p>
+
+<ul>
+<li>All feeds needed to run the program.</li>
+<li>All GPG keys signing the feeds.</li>
+<li>All selected implementations (versions).</li>
+<li>A copy of Zero Install, in case the target system doesn't have it.</li>
+<li>An installation script.</li>
+</ul>
+
+<p>
+To make the archive self-extracting, a short shell script is prepended to
+the archive which unpacks it to a temporary directory and then runs the
+installer. If you want to extract the files without executing anything, you
+can get the information you need from the first four lines of the script, which
+look like this:
+</p>
+
+<pre>
+#!/bin/sh
+# 0export 0.1
+archive_offset=00831
+archive_format=application/x-bzip-compressed-tar
+</pre>
+
+<h2 id="idm28597968779968">Testing</h2>
+
+<p>
+To test the installer:
+</p>
+
+<pre>$ sh setup.sh</pre>
+
+<p>
+The script currently (0export 0.1) does the following:
+</p>
+
+<ol>
+<li>Runs <b>gpg --import</b> on each GPG key in the archive, adding the keys that
+signed the feeds to your key-ring.</li>
+<li>Runs <b>0launch --import</b> on each feed in the archive. Every signing GPG key
+is added to the trusted list for the feed's domain. This allows checking for updates
+in future without confirming the keys. If the user already has a newer version of the
+feed, the import has no effect.</li>
+<li>Chooses a set of implementations (<b>0install select --xml URI</b>) in
+minimal network use mode and with the implementations in the setup.sh available.</li>
+<li>Copies any selected implementations into the system or user's cache (<b>~/.cache/0install.net/implementations</b>).</li>
+<li>Runs the program (<b>0launch --offline URI</b>).</li>
+</ol>
+
+<p>
+All steps use the bundled version of 0launch.
+</p>
+
+<h2 id="idm28597968772800">Support for multiple architectures or multiple applications in one bundle</h2>
+
+<p>
+You can use the "--arch" option to set the target architecture(s).
+For example, this command will select two binaries for each component,
+one that will run on an i586 machine and one that will run on an x86_64
+machine:
+</p>
+
+<pre>0export --arch Linux-i586 --arch Linux-x86_64 setup.sh http://...</pre>
+
+<p>
+If a single binary is the best option for both then it will
+only be included in the bundle once. When the bundle is installed, only
+the required versions will be copied into the machine's cache.
+</p>
+
+<p>
+You can include multiple applications by listing multiple URIs. All applications
+will be added to the user's menu, but only the first will be run if the user selects
+the run option in the dialog. Note that dependencies are included automatically and
+should not be listed.
+</p>
+
+<h2 id="idm28597968769968">FAQ</h2>
+
+<dl>
+<dt id="idm28597968769232">What about security?</dt>
+
+<dd>Running an executable isn't a great way to install a program. The normal
+Zero Install process of dragging a feed link to a trusted installation program
+is much better. However, distributions have been very slow to support this.
+0export is an attempt to boot-strap the adoption process. The setup.sh script is
+designed to be easy to parse, so that in future it can be used as a simple archive.
+</dd>
+
+<dt id="idm28597968768016">Why doesn't it confirm before trusting the keys?</dt>
+
+<dd>
+If the setup.sh is genuine then this is what you want. If it isn't, it's
+already too late. Even if the normal install script asked for confirmation,
+a malicious version could be modified to skip the check. One of many reasons
+why install scripts are a bad idea.
+</dd>
+
+</dl>
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Introduction</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="open">
+<a href="users.html">For users 
+      </a><ul>
+<li class="open">
+<a href="user-guide-intro.html">Basic usage 
+      </a><ul>
+<li class="leaf"><a href="user-guide-intro.html" class="selected">Introduction 
+      </a></li>
+<li class="leaf"><a href="user-guide-first-launch.html">First launch 
+      </a></li>
+<li class="leaf"><a href="user-guide-shortcuts.html">Making shortcuts 
+      </a></li>
+<li class="leaf"><a href="user-guide-apps.html">Apps 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="user-guide-policy.html">Advanced usage 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm44285997126128">Introduction</h2>
+<p>
+  A 0install application is distributed using a <i>feed file</i>. A feed is an XML
+  file that tells 0install how to run the application, and which versions are
+  available. The feed file is normally published on the web; the URL of the
+  feed is the unique identifier of the application.
+</p>
+<p>
+  For example, OpenTTD is available via 0install, it has 
+  <a href="http://repo.roscidus.com/games/openttd">this
+  feed file</a> and it is uniquely identified as
+  <a href="http://repo.roscidus.com/games/openttd">
+  http://repo.roscidus.com/games/openttd</a>.
+</p>
+<p>
+  To get a 0install application:
+  <ol>
+    <li>
+      <p>
+        Find a program you want to run on the web:
+      </p>
+      <p>
+        <img src="screens/find-url.png" alt="" width="400" height="314">
+      </p>
+    </li>
+    <li>
+      <p>
+        Either launch it directly:
+      </p>
+      <pre>$ <b>0launch http://repo.roscidus.com/games/openttd</b></pre>
+      <p>
+        Or <a href="user-guide-shortcuts.html">generate a shortcut</a> to launch it later:
+      </p>
+      <p>
+        <img src="screens/add-url.png" alt="" width="400" height="364">
+      </p>
+    </li>
+  </ol>
+</p>
+<p>
+  Upon first launch of a feed, 0install may ask you to accept keys and be
+  allowed to download files.
+</p>
+
+<div class="quicklinks"><div class="row"><a href="user-guide-first-launch.html"><img src="tango/go-next.png" alt="" width="48" height="48"><br>Continue</a></div></div>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

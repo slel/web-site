@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Source code</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="open">
+<a href="install-source.html" class="selected">Source code 
+      </a><ul><li class="leaf"><a href="install-python.html">Old Python version 
+      </a></li></ul>
+</li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<table><tr>
+<td style="vertical-align: top">
+<h2>Install from Source</h2>
+
+<p>
+  <strong>This is the newer OCaml version of 0install.</strong>
+  There is also an older <a href="install-python.html">pure Python version</a>.
+  The OCaml version is completely backwards compatible with the Python version.
+</p>
+</td>
+<td style="vertical-align: top"><div class="program"><table>
+<tr>
+<th>Name</th>
+<td>0install</td>
+</tr>
+<tr>
+<th>Maintainer</th>
+<td>Thomas Leonard</td>
+</tr>
+<tr>
+<th>License</th>
+<td>GNU Lesser General Public License</td>
+</tr>
+<tr>
+<th>SCM</th>
+<td><a href="https://github.com/0install/0install">GIT repository</a></td>
+</tr>
+</table></div></td>
+</tr></table>
+
+<p>
+  If you are looking for a package or the generic binaries, try the <a href="injector.html">main downloads page</a>.
+</p>
+
+<h2 id="idm31875282971472">Instructions</h2>
+
+<p>
+Download the latest .tar.bz2 archive from <a href="https://sourceforge.net/projects/zero-install/files/0install/">the
+SF.net download page</a> (and the corresponding .sig file if you want to verify it), or using wget:
+</p>
+<pre>
+<b>wget https://downloads.sf.net/project/zero-install/0install/2.12.3/0install-2.12.3.tar.bz2</b>
+<b>wget https://downloads.sf.net/project/zero-install/0install/2.12.3/0install-2.12.3.tar.bz2.sig</b>
+</pre>
+
+<p>
+Check that the signature is correct using GPG (this also ensures that GPG is installed correctly).
+You'll need <a href="http://0install.net/public_key.gpg">my GPG key</a>, which you can download and import
+using --recv-key (or <a href="http://rox.sourceforge.net/desktop/GPG">manually</a>):
+</p>
+
+<pre>
+<b>gpg --recv-key --keyserver pgp.mit.edu 1C325588</b>
+<b>gpg 0install-2.12.3.tar.bz2.sig</b>
+gpg: Signature made Wed 15 Nov 2017 13:53:57 GMT using RSA key ID 1C325588
+gpg: Good signature from "Thomas Leonard &lt;XXX@gmail.com&gt;"
+gpg:                 aka "Thomas Leonard &lt;XXX@docker.com&gt;"
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 5DD5 8D70 899C 454A 966D  6A51 7513 3C8F 94F6 E0CC
+     Subkey fingerprint: BB54 6E44 A179 B1AD 4240  41D7 0616 A2C6 1C32 5588
+</pre>
+
+<p>
+The warning is just to tell you that you haven't yet established that the key really
+belongs to me (ultra-paranoid users will now cross-check the finger-print using
+some other source of information).
+</p>
+
+<p>
+  You'll probably need to install some OCaml dependencies before you can build.
+  See the <a href="https://github.com/0install/0install/blob/b2.12/README.md">README</a> for details.
+  You should then extract the archive, change directory inside it and build:
+</p>
+<pre>
+<b>tar xf 0install-2.12.3.tar.bz2</b>
+<b>cd 0install-2.12.3</b>
+<b>make</b>
+</pre>
+
+<p>
+</p>
+
+<table class="split">
+ <col id="col1">
+ <tr>
+<th>Installing normally</th>
+<th>Installing without root access</th>
+</tr>
+ <tr>
+  <td>
+  <p>For a normal install, either su to root, install, and exit from root, or use sudo:</p>
+<pre><b>sudo make install</b>
+</pre>
+ </td>
+<td>
+<p>
+If you don't have the root password, use this command.
+You'll need to make sure that ~/bin is in $PATH in this case.
+</p>
+<pre><b>make install_home</b>
+<b>export PATH=$HOME/bin:$PATH</b>
+</pre>
+<p>
+Logging out and back in again will ensure $PATH and the Applications menu get updated correctly,
+on Ubuntu at least.
+</p>
+  </td>
+ </tr>
+</table>
+
+<p>
+You now have a new <b>0install</b> command...
+</p>
+
+<div class="quicklinks"><div class="row"><a href="users.html"><img src="tango/go-next.png" alt="" width="48" height="48"><br>Continue to tutorial</a></div></div>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

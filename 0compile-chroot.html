@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Chroot Build</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="open">
+<a href="tools.html">Tool reference 
+      </a><ul>
+<li class="leaf"><a href="0bootstrap.html">0bootstrap 
+      </a></li>
+<li class="open">
+<a href="0compile.html">0compile 
+      </a><ul>
+<li class="leaf"><a href="0compile-dev.html">Developers 
+      </a></li>
+<li class="leaf"><a href="0compile-chroot.html" class="selected">Chroot Build 
+      </a></li>
+<li class="leaf"><a href="0compile-scons.html">Example: SCons 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="ebox.html">ebox 
+      </a></li>
+<li class="leaf"><a href="0export.html">0export 
+      </a></li>
+<li class="leaf"><a href="feedlint.html">FeedLint 
+      </a></li>
+<li class="leaf"><a href="make-headers.html">Make-headers 
+      </a></li>
+<li class="leaf"><a href="0mirror.html">0mirror 
+      </a></li>
+<li class="leaf"><a href="pkg2zero.html">pkg2zero 
+      </a></li>
+<li class="leaf"><a href="0publish.html">0publish 
+      </a></li>
+<li class="closed"><a href="0release.html">0release 
+      </a></li>
+<li class="leaf"><a href="0share.html">0share 
+      </a></li>
+<li class="leaf"><a href="0template.html">0template 
+      </a></li>
+<li class="leaf"><a href="0repo.html">0repo 
+      </a></li>
+<li class="leaf"><a href="0test.html">0test 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm23195335904224">0compile: Chroot Build</h2>
+
+<p>
+  This page explains how to build in a "chroot" sandbox environment <a href="0compile.html">using 0compile</a>.
+  It offers a few advantages:
+</p>
+
+<ul>
+  <li>Building doesn't affect the host environment, and the host doesn't influence the build.</li>
+  <li>Builds can target a different architecture, such as building <i>x</i>86 packages from a <i>x</i>64 host.</li>
+  <li>The build sandbox is smaller than a virtual machine, and the download is typically smaller.</li>
+</ul>
+
+<p>
+  The build system ("chroot") comes with development tools such as gcc and make, and the <b>0launch</b> command.
+</p>
+
+<h2 id="idm23195335899136">Contents</h2>
+
+<ol class="toc">
+<li><a href="#idm23195335898256">Chroot setup</a></li>
+<li><a href="#idm23195335846576">0compile setup</a></li>
+<li><a href="#idm23195335843760">0compile build</a></li>
+<li><a href="#idm23195335836224">Publish results</a></li>
+<li><a href="#idm23195335834720">Future directions</a></li>
+</ol>
+
+<h2 id="idm23195335898256">Chroot setup</h2>
+
+<p>Alternatives:</p>
+
+<ol>
+  <li>Build on a <a href="#debian">Debian system</a> (including Ubuntu), using APT and .deb with <b>pbuilder</b>
+</li>
+  <li>Build on a <a href="#redhat">Red Hat system</a> (including Fedora), using Yum and .rpm with <b>mock</b>
+</li>
+  <li>Build on a <a href="#lfs">Linux From Scratch</a> system, using only source tarballs with <b>chroot</b>
+</li>
+</ol>
+
+<p>
+  For all systems we use a "build" directory, that is bind-mounted inside the chroot, to hold our build results.
+</p>
+
+<dl>
+  <dt id="debian">Debian / Ubuntu</dt>
+
+<dd>
+
+<p>
+<a href="http://pbuilder.alioth.debian.org/">http://pbuilder.alioth.debian.org/</a></p>
+
+<p>
+Install and configure the software:</p>
+
+<pre>
+$ <b>sudo apt-get install pbuilder</b>
+
+$ mkdir -p build
+$ echo "BINDMOUNTS='build'" &gt;&gt; /etc/pbuilderrc
+</pre>
+
+<p>
+Prepare the build environment cache:</p>
+
+<pre>
+MIRROR=http://ftp.debian.org/debian/
+DIST=lenny
+
+ARCH=i386 # or amd64
+CPU=i486 # or x86_64
+
+BASEDIR=/var/cache/pbuilder
+TGZ=${BASEDIR}/${DIST}-${ARCH}.tgz
+
+$ <b>sudo pbuilder --create --basetgz $TGZ --mirror $MIRROR \
+                --distribution $DIST --architecture $ARCH \
+                --extrapackages "zeroinstall-injector"</b>
+</pre>
+
+<p>
+Enter the build environment chroot:</p>
+
+<pre>
+$ <b>setarch $CPU sudo pbuilder --login --basetgz $TGZ</b>
+# cat /etc/debian_version
+5.0.8
+# 0launch --version
+0launch (zero-install) 0.34
+Copyright (C) 2007 Thomas Leonard
+...
+</pre>
+
+<p>
+Has <tt>build-essential</tt> dependencies:</p>
+
+<ul style="font-size:0.75em">
+<li>dpkg-dev
+  <ul>
+﻿  <li>dpkg</li>
+  <li>perl5</li>
+  <li>perl-modules</li>
+  <li>cpio</li>
+  <li>bzip2</li>
+  <li>lzma</li>
+  <li>patch</li>
+  <li>make</li>
+  <li>binutils</li>
+  <li>libtimedate-perl</li>
+  <li>gcc | c-compiler</li>
+  </ul>
+</li>
+<li>g++</li>
+<li>libc6-dev | libc-dev</li>
+<li>make</li>
+</ul>
+
+</dd>
+  <dt id="redhat">Red Hat / Fedora</dt>
+
+<dd>
+
+<p>
+<a href="https://fedorahosted.org/mock/">https://fedorahosted.org/mock/</a></p>
+
+<p>
+Install and configure the software:</p>
+<pre>
+$ <b>su -c "yum install mock"</b>
+$ <b>su -c "usermod -G mock $USER"</b>
+
+$ mkdir -p build
+$ echo "config_opts['plugin_conf']['bind_mount_opts']['dirs']\
+.append(('./build', '/build'))" &gt;&gt; /etc/mock/site-defaults.cfg
+</pre>
+
+<p>
+Prepare the build environment cache:</p>
+
+<pre>
+ARCH=i386 # or x86_64
+
+ROOT=epel-5-$ARCH
+
+$ <b>mock --root=$ROOT --arch=$ARCH --init</b>
+$ <b>mock --root=$ROOT --arch=$ARCH --install "zeroinstall-injector"</b>
+</pre>
+
+<p>
+Enter the build environment chroot:</p>
+
+<pre>
+$ <b>mock --root=$ROOT --arch=$ARCH --shell</b>
+&gt; cat /etc/redhat-release
+CentOS release 5.6 (Final)
+&gt; 0launch --version
+0launch (zero-install) 0.38
+Copyright (C) 2007 Thomas Leonard
+...
+
+$ <b>mock --root=$ROOT --arch=$ARCH --clean</b>
+</pre>
+
+<p>
+Has <tt>buildsys-build</tt> dependencies:</p>
+
+<ul style="font-size:0.75em">
+<li>﻿bash</li>
+<li>buildsys-macros</li>
+<li>bzip2</li>
+<li>coreutils</li>
+<li>cpio</li>
+<li>diffutils</li>
+<li>elfutils</li>
+<li>gcc-c++</li>
+<li>gcc</li>
+<li>gzip</li>
+<li>make</li>
+<li>patch</li>
+<li>perl</li>
+<li>redhat-release</li>
+<li>redhat-rpm-config</li>
+<li>rpm-build</li>
+<li>sed</li>
+<li>tar</li>
+<li>unzip</li>
+<li>which</li>
+</ul>
+
+</dd>
+
+  <dt id="lfs">Linux From Scratch</dt>
+
+<dd>
+
+<p>
+<a href="http://www.linuxfromscratch.org/lfs/">http://www.linuxfromscratch.org/lfs/</a></p>
+
+<p>Build LFS:</p>
+<ul>
+<li><a href="http://www.linuxfromscratch.org/lfs/view/stable/">Read the Linux From Scratch Book</a></li>
+</ul>
+<p>Enter chroot:</p>
+<blockquote>
+<pre>
+export LFS=/mnt/lfs
+
+sudo mount -v --bind /dev $LFS/dev
+
+sudo mount -vt devpts devpts $LFS/dev/pts
+sudo mount -vt tmpfs shm $LFS/dev/shm
+sudo mount -vt proc proc $LFS/proc
+sudo mount -vt sysfs sysfs $LFS/sys
+
+sudo mkdir -pv $LFS/build
+sudo mount -v --bind ./build $LFS/build
+
+$ <b>sudo chroot $LFS /usr/bin/env -i \
+    HOME=/root TERM="$TERM" PS1='\u:\w\$ ' \
+    PATH=/bin:/usr/bin:/sbin:/usr/sbin \
+    /bin/bash --login</b>
+# cat /etc/lfs-release
+6.8
+</pre>
+</blockquote>
+<p>BLFS packages:</p>
+<ul>
+<li>
+<a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/openssl.html">OpenSSL</a> (Python dependency)</li>
+<li><a href="http://www.linuxfromscratch.org/blfs/view/svn/general/python.html">Python</a></li>
+<li><a href="http://www.linuxfromscratch.org/blfs/view/svn/postlfs/gnupg.html">GnuPG</a></li>
+<li>
+<a href="http://www.linuxfromscratch.org/blfs/view/svn/general/pcre.html">PCRE</a> (Glib dependency)</li>
+<li>
+<a href="http://www.linuxfromscratch.org/blfs/view/svn/general/glib2.html">GLib</a> (PyGObject dependency)</li>
+<li><a href="http://www.linuxfromscratch.org/blfs/view/svn/general/python-modules.html#pygobject">PyGObject</a></li>
+</ul>
+<p>Zero Install itself:</p>
+<ul>
+<li><a href="http://0install.net/install-source.html">ZeroInstall-Injector</a></li>
+</ul>
+
+</dd>
+</dl>
+
+<h2 id="idm23195335846576">0compile setup</h2>
+
+<p>
+Now we have a chroot with <b>0launch</b>, and can add <b>0compile</b>:</p>
+
+<pre>
+CMD="0compile"
+URI="http://0install.net/2006/interfaces/0compile.xml"
+
+$ yes Y | /usr/bin/0launch -cd $URI
+$ 0alias -d /usr/bin $CMD $URI
+</pre>
+
+<p>
+Note: depending on your build OS and Python version,
+you might need to use an older version of 0compile.</p>
+
+<h2 id="idm23195335843760">0compile build</h2>
+
+<p>
+Begin with downloading the source code, in console mode:</p>
+
+<pre>
+$ <b>0launch -cd -s <i>http://www.example.com/interfaces/foo.xml</i></b>
+</pre>
+
+<p>
+Then we setup the build sub-directory using the source feed:</p>
+
+<pre>
+$ cd /build
+$ <b>0compile setup <i>http://www.example.com/interfaces/foo.xml</i> <i>foo</i></b>
+</pre>
+
+<p>
+Next we proceed with building the binary from the source:</p>
+
+<pre>
+$ cd <i>foo</i>
+$ <b>0compile build</b>
+</pre>
+
+<p>
+Finally we tell 0compile to prepare the binary feed/archive:</p>
+
+<pre>
+$ <b>0compile publish http://www.example.com/implementations</b>
+</pre>
+
+<p>
+After exiting the chroot, we can find the results in build/foo.</p>
+
+<h2 id="idm23195335836224">Publish results</h2>
+
+<p>
+  The new binary feed is now ready to be merged with our source feed,
+  signed (using 0publish --xmlsign), and published with the archives.
+</p>
+
+<p>
+  Since we used a new clean chroot to build the binary, we can be
+  reasonably sure that all dependencies are included in the source feed.
+</p>
+
+<h2 id="idm23195335834720">Future directions</h2>
+
+<p>
+  In the future it might be possible to use the
+  <a href="http://open-build-service.org/">Open Build Service</a> (OBS),
+  to build Zero Install packages using a distributed development platform.
+</p>
+
+<p>
+  Currently it (OBS) supports building RPM and Debian packages, those can be
+  converted to Zero Install feeds using <a href="pkg2zero.html">pkg2zero</a>
+  (when relocatable).
+</p>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

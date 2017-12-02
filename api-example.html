@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: API example</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="open">
+<a href="dev.html">For developers 
+      </a><ul>
+<li class="leaf"><a href="get-involved.html">Get involved 
+      </a></li>
+<li class="leaf"><a href="using-git.html">Using Git 
+      </a></li>
+<li class="leaf"><a href="injector-design.html">Design 
+      </a></li>
+<li class="leaf"><a href="solver.html">The Solver 
+      </a></li>
+<li class="leaf"><a href="json-api.html">JSON API 
+      </a></li>
+<li class="leaf"><a href="python-api/html/index.html">Python API 
+      </a></li>
+<li class="leaf"><a href="api-example.html" class="selected">API example 
+      </a></li>
+<li class="leaf"><a href="dev-site.html">The web-site 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm33991406584304">Using the Python API: a simple example</h2>
+
+<p>
+  The API is quite large and can be a little daunting at first. Here is a simple example, showing how
+  to download a feed and import it into the cache (including downloading any missing GPG keys and confirming
+  them with the user):
+</p>
+
+<pre>
+from zeroinstall.injector.config import load_config
+from zeroinstall.support import tasks
+
+config = load_config()
+
+@tasks.async
+def download_info(feed_url):
+	print "Downloading", feed_url
+
+	feed_download = config.fetcher.download_and_import_feed(feed_url)
+	yield feed_download
+	tasks.check(feed_download)
+
+	print "Download complete"
+
+	feed = config.iface_cache.get_feed(feed_url)
+	print "Name:", feed.name
+	print "Summary:", feed.summary
+
+url = "http://rox.sourceforge.net/2005/interfaces/ROX-Filer"
+tasks.wait_for_blocker(download_info(url))
+</pre>
+
+<p>
+  The first step is to create a <a href="python-api/html/zeroinstall.injector.config.Config-class.html">Config</a> object. <b>load_config</b> creates one from the configuration files in the user's home directory.
+</p>
+
+<p>
+  0install uses Python's generators to manage parallel processes (e.g. so that multiple downloads can happen
+  in parallel without blocking each other). This is a kind of light-weight alternative to threads: control
+  only passes between functions at the <b>yield</b> statements. To create a function that can operate like
+  this, just annotate it with the <b>@tasks.async</b> decorator.
+</p>
+
+<p>
+  In this case the <b>download_info</b> function uses a <a href="python-api/html/zeroinstall.injector.fetch.Fetcher-class.html">Fetcher</a> to start downloading the feed. <b>download_and_import_feed</b> returns a <a href="python-api/html/zeroinstall.support.tasks.Blocker-class.html">Blocker</a> for the result. Yielding this suspends the <b>download_info</b> function until the download is complete.
+</p>
+
+<p>
+  When the blocker is done, we call <a href="python-api/html/zeroinstall.support.tasks-module.html#check">tasks.check</a> on it to check whether it was successful (tasks.check will throw an exception if not). If successful, we can get the updated feed from the <a href="python-api/html/zeroinstall.injector.iface_cache.IfaceCache-class.html">IfaceCache</a>.
+</p>
+
+<h3 id="idm33991406527824">Other interesting starting points</h3>
+
+<ul>
+  <li>If you want to download all the feeds needed to run a program, use a <a href="python-api/html/zeroinstall.injector.driver.Driver-class.html">Driver</a>.</li>
+  <li>To load and execute a saved set of selections, load them using a <a href="python-api/html/zeroinstall.injector.selections.Selections-class.html">Selections</a> object and pass them to <a href="python-api/html/zeroinstall.injector.run-module.html">run.execute_selections</a>.</li>
+  <li>To see how the <b>0install</b> command is implemented, look in the <a href="python-api/html/zeroinstall.cmd-module.html">zeroinstall.cmd</a> package.</li>
+</ul>
+
+<h3 id="idm33991406522224">Depending on 0install</h3>
+
+<p>
+  Just running the example above using e.g. "python example.py" would get the "zeroinstall" library from the system installation of 0install. It's better to create a local feed for your program and give 0install as a dependency. Then you can be sure your program will get a version of the libraries that it is compatible with (the system version may be too old). Here's a sample feed you can use:
+</p>
+
+<pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface"&gt;
+  &lt;name&gt;api-example&lt;/name&gt;
+  &lt;summary&gt;shows how to use the 0install Python API&lt;/summary&gt;
+
+  &lt;group&gt;
+    &lt;command name="run" path="<b>example.py</b>"&gt;
+      &lt;runner interface="http://repo.roscidus.com/python/python"&gt;
+	&lt;version before="3"/&gt;
+      &lt;/runner&gt;
+    &lt;/command&gt;
+    &lt;requires interface="http://0install.net/2007/interfaces/ZeroInstall.xml"&gt;
+      &lt;version not-before="1.0"/&gt;
+      &lt;environment insert="" name="PYTHONPATH"/&gt;
+    &lt;/requires&gt;
+    &lt;implementation id="." version="0.1-pre"/&gt;
+  &lt;/group&gt;
+&lt;/interface&gt;
+</pre>
+
+<h3 id="idm33991406519424">The full API docs</h3>
+
+<ul>
+  <li><a href="python-api/html/index.html">zeroinstall API docs</a></li>
+</ul>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

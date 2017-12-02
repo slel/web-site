@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Customisation</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="open">
+<a href="tools.html">Tool reference 
+      </a><ul>
+<li class="leaf"><a href="0bootstrap.html">0bootstrap 
+      </a></li>
+<li class="closed"><a href="0compile.html">0compile 
+      </a></li>
+<li class="leaf"><a href="ebox.html">ebox 
+      </a></li>
+<li class="leaf"><a href="0export.html">0export 
+      </a></li>
+<li class="leaf"><a href="feedlint.html">FeedLint 
+      </a></li>
+<li class="leaf"><a href="make-headers.html">Make-headers 
+      </a></li>
+<li class="leaf"><a href="0mirror.html">0mirror 
+      </a></li>
+<li class="leaf"><a href="pkg2zero.html">pkg2zero 
+      </a></li>
+<li class="leaf"><a href="0publish.html">0publish 
+      </a></li>
+<li class="open">
+<a href="0release.html">0release 
+      </a><ul>
+<li class="leaf"><a href="0release-phases.html" class="selected">Customisation 
+      </a></li>
+<li class="leaf"><a href="0release-binaries.html">Compiled binaries 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="0share.html">0share 
+      </a></li>
+<li class="leaf"><a href="0template.html">0template 
+      </a></li>
+<li class="leaf"><a href="0repo.html">0repo 
+      </a></li>
+<li class="leaf"><a href="0test.html">0test 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm26675218304096">Release customisation</h2>
+
+<p>
+<a href="0release.html">0release</a> can be used to create releases of your software from a version control system.
+It uses sensible defaults, allowing it to create releases for simple projects with very little configuration.
+For more complex projects, you can specify extra commands that should be run during the release process using the
+syntax described here.
+</p>
+
+<ol class="toc">
+<li><a href="#idm26675218301872">Example</a></li>
+<li><a href="#idm26675218296640">Phase: commit-release</a></li>
+<li><a href="#idm26675218292240">Phase: generate-archive</a></li>
+<li><a href="#idm26675218285440">&lt;add-toplevel-directory&gt;</a></li>
+</ol>
+
+<h2 id="idm26675218301872">Example</h2>
+
+<p>
+For example, imagine that our hello-world example program now prints out a
+banner with its version number when run. <b>hello.py</b> now looks like this:
+</p>
+
+<pre>
+#!/usr/bin/env python
+version='0.1'
+print "Welcome to Hello World version %s" % version
+print "Hello World!"
+</pre>
+
+<p>
+We want to make sure that the number in the hello.py file is updated automatically when we make a new release.
+To do this, add a &lt;release:management&gt; element to your feed, like this:
+</p>
+
+<pre>
+&lt;interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface"&gt;
+  &lt;name&gt;HelloWorld&lt;/name&gt;
+  &lt;summary&gt;minimal demonstration package for 0release&lt;/summary&gt;
+  &lt;description&gt;
+    This program outputs the message "Hello World". You can create new releases of it
+    using 0release.
+  &lt;/description&gt;
+
+  <b>&lt;release:management xmlns:release='http://zero-install.sourceforge.net/2007/namespaces/0release'&gt;
+    &lt;release:action phase='commit-release'&gt;sed -i "s/^version='.*'$/version='$RELEASE_VERSION'/" hello.py&lt;/release:action&gt;
+  &lt;/release:management&gt;</b>
+  ...
+&lt;/interface&gt;
+</pre>
+
+<p>
+This tells 0release that during the <b>commit-release</b> phase (in which it updates the version number to the number chosen for the
+release) it should execute the given command, which updates the version line in the Python code. Of course, you can perform any
+action you want.
+</p>
+
+<h2 id="idm26675218296640">Phase: commit-release</h2>
+
+<dl>
+ <dt id="idm26675218295952">Current directory</dt>
+<dd>The working copy (under version control), as specified by the <b>id</b> attribute in the feed.</dd>
+ <dt id="idm26675218294848">$RELEASE_VERSION</dt>
+<dd>The version chosen for the new release.</dd>
+</dl>
+
+<p>
+These actions are run after the user has entered the version number for the new release. After the actions are run, 0release will
+update the local feed file with the new version number and commit all changes to the version control system.
+</p>
+
+<p>
+Any changes made to the working copy will therefore appear in both the history and also in the release archive.
+</p>
+
+<p>
+If your script fails (returns a non-zero exit status), 0release will abort but will not revert any changes made by the actions. You
+will have to manually revert any changes before 0release will allow you to restart the release process.
+</p>
+
+<h2 id="idm26675218292240">Phase: generate-archive</h2>
+
+<dl>
+ <dt id="idm26675218291600">Current directory</dt>
+<dd>A temporary directory created by unpacking the archive exported from the SCM.</dd>
+ <dt id="idm26675218290960">$RELEASE_VERSION</dt>
+<dd>The version chosen for the new release.</dd>
+</dl>
+
+<p>
+Once the release version is committed to version control, 0release exports that revision to a temporary directory.
+After running all the actions in this phase, the release tarball is created from the final state of the directory.
+Use this phase to generate files that should be in the release archive but not in the tagged revision under version
+control. Typical actions here are:
+</p>
+
+<ul>
+<li>Running 'autoconf' to create a 'configure' script.</li>
+<li>Building translations (.mo files) from source .po files.</li>
+<li>Building documentation (e.g. HTML from DocBook sources).</li>
+</ul>
+
+<p>
+Notice that all the above generate <i>platform independent</i> files.
+<i>Do not</i> compile to platform-specific binaries here (e.g. do not compile
+C source files to executables). For such programs, you need one source package
+and multiple binary packages (one for each architecture).
+See <a href="0release-binaries.html">Releases with source and binary packages</a> for that.
+</p>
+
+<h2 id="idm26675218285440">&lt;add-toplevel-directory&gt;</h2>
+
+<p>
+Adding this element causes 0release to put everything in a sub-directory, named after the
+feed. This is probably only useful for ROX applications, where the version control system
+contains e.g. just <b>AppRun</b> but the release should contain <b>archive-2.2/Archive/AppRun</b>.
+This is done using:
+</p>
+
+<pre>
+  &lt;release:management xmlns:release="http://zero-install.sourceforge.net/2007/namespaces/0release"&gt;
+    &lt;release:add-toplevel-directory/&gt;
+  &lt;/release:management&gt;
+</pre>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

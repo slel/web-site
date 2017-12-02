@@ -1,0 +1,406 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: 0test</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="open">
+<a href="tools.html">Tool reference 
+      </a><ul>
+<li class="leaf"><a href="0bootstrap.html">0bootstrap 
+      </a></li>
+<li class="closed"><a href="0compile.html">0compile 
+      </a></li>
+<li class="leaf"><a href="ebox.html">ebox 
+      </a></li>
+<li class="leaf"><a href="0export.html">0export 
+      </a></li>
+<li class="leaf"><a href="feedlint.html">FeedLint 
+      </a></li>
+<li class="leaf"><a href="make-headers.html">Make-headers 
+      </a></li>
+<li class="leaf"><a href="0mirror.html">0mirror 
+      </a></li>
+<li class="leaf"><a href="pkg2zero.html">pkg2zero 
+      </a></li>
+<li class="leaf"><a href="0publish.html">0publish 
+      </a></li>
+<li class="closed"><a href="0release.html">0release 
+      </a></li>
+<li class="leaf"><a href="0share.html">0share 
+      </a></li>
+<li class="leaf"><a href="0template.html">0template 
+      </a></li>
+<li class="leaf"><a href="0repo.html">0repo 
+      </a></li>
+<li class="leaf"><a href="0test.html" class="selected">0test 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<table><tr>
+<td style="vertical-align: top">
+<h2>0test</h2>
+
+<p>
+A Zero Install <a href="interface-spec.html">feed</a> can specify a command to run to test the program automatically
+using the <b>self-test</b> attribute (or the "test" command). 0test runs this command.
+It can also test combinations of various versions of a program and its dependencies.
+</p>
+
+</td>
+<td style="vertical-align: top"><div class="program"><table>
+<tr>
+<th>Name</th>
+<td>0test</td>
+</tr>
+<tr>
+<th>Maintainer</th>
+<td>Thomas Leonard</td>
+</tr>
+<tr>
+<th>License</th>
+<td>GNU General Public License</td>
+</tr>
+<tr>
+<th>Run it</th>
+<td><a href="http://0install.net/2008/interfaces/0test.xml">Zero Install feed</a></td>
+</tr>
+<tr>
+<th>SCM</th>
+<td><a href="http://repo.or.cz/w/0test.git">GIT repository</a></td>
+</tr>
+</table></div></td>
+</tr></table>
+
+<p>
+Create a short-cut to it in the usual way:
+</p>
+
+<pre>
+$ 0install add 0test http://0install.net/2008/interfaces/0test.xml
+</pre>
+
+<h2 id="idm23422414814208">Usage</h2>
+
+<p>
+Most simply, you can use it to run the tests for a program you have downloaded or checked out of version control. e.g.
+</p>
+
+<pre>
+$ git clone some-program
+$ 0test some-program/program.xml
+</pre>
+
+<p>
+You can also use it to test released programs, e.g. to test the default version of <a hef="0compile.html">0compile</a>:
+</p>
+
+<pre>
+$ <b>0test http://0install.net/2006/interfaces/0compile.xml</b>
+Passed
+ - 0compile v0.21-post, ZeroInstall-Injector v0.51.1, 0publish v0.18-post, ROX-Lib2 v2.0.6-post
+</pre>
+
+<p>
+  0test prints out the result and the versions of all components used in the test.
+</p>
+
+<p>
+You can specify a particular set of versions to test:
+</p>
+
+<pre>
+$ <b>0test http://0install.net/2006/interfaces/0compile.xml 0.26 0.27</b>
+Passed
+ - ZeroInstall-Injector v1.7 0compile v0.26, ROX-Lib2 v2.0.6, python v2.7.3, 0publish v0.20
+ - ZeroInstall-Injector v1.7 0compile v0.27, ROX-Lib2 v2.0.6, python v2.7.3, 0publish v0.20
+None skipped
+None failed
+</pre>
+
+<p>
+A summary is printed at the end showing the result of each combination:
+</p>
+
+<dl>
+ <dt id="idm23422414807968">Passed</dt>
+<dd>the tests all passed successfully (the command returned an exit status of zero)</dd>
+ <dt id="idm23422414807232">Skipped</dt>
+<dd>this combination of versions can't be used together (or no tests are defined)</dd>
+ <dt id="idm23422414806496">Failed</dt>
+<dd>some tests failed (the self-test command returned a non-zero exit status)</dd>
+</dl>
+
+<p>
+You can specify versions of libraries the program depends on too. 0test will try all combinations.
+This tests three versions of 0compile against three versions of Zero Install (a total of 3 x 3 = 9 tests):
+</p>
+
+<pre>$ <b>0test --html results.html \
+  http://0install.net/2006/interfaces/0compile.xml 0.19 0.20 0.21 \
+  http://0install.net/2007/interfaces/ZeroInstall.xml 0.47 0.48 0.49</b>
+Passed
+ - 0compile v0.20, ZeroInstall-Injector v0.48, 0publish v0.18-post, ROX-Lib2 v2.0.6-post
+ - 0compile v0.20, ZeroInstall-Injector v0.49, 0publish v0.18-post, ROX-Lib2 v2.0.6-post
+ - 0compile v0.21, ZeroInstall-Injector v0.48, 0publish v0.18-post, ROX-Lib2 v2.0.6-post
+ - 0compile v0.21, ZeroInstall-Injector v0.49, 0publish v0.18-post, ROX-Lib2 v2.0.6-post
+Skipped
+ - 0compile v0.21, ZeroInstall-Injector v0.47
+Failed
+ - 0compile v0.19, ZeroInstall-Injector v0.47, 0publish v0.18-post, ROX-Lib2 v2.0.6-post
+ - 0compile v0.19, ZeroInstall-Injector v0.48, 0publish v0.18-post, ROX-Lib2 v2.0.6-post
+ - 0compile v0.19, ZeroInstall-Injector v0.49, 0publish v0.18-post, ROX-Lib2 v2.0.6-post
+ - 0compile v0.20, ZeroInstall-Injector v0.47, 0publish v0.18-post, ROX-Lib2 v2.0.6-post
+</pre>
+
+<p>
+  The <b>--html results.html</b> option causes it to also generate this table:
+</p>
+
+<table class="testresults">
+<tr>
+<th></th>
+<th colspan="3">ZeroInstall-Injector</th>
+</tr>
+<tr>
+<th>0compile</th>
+<th>0.47</th>
+<th>0.48</th>
+<th>0.49</th>
+</tr>
+<tr>
+<th>0.19</th>
+<td class="failed">0publish 0.18-post
+ROX-Lib2 2.0.6-post</td>
+<td class="failed">0publish 0.18-post
+ROX-Lib2 2.0.6-post</td>
+<td class="failed">0publish 0.18-post
+ROX-Lib2 2.0.6-post</td>
+</tr>
+<tr>
+<th>0.20</th>
+<td class="failed">0publish 0.18-post
+ROX-Lib2 2.0.6-post</td>
+<td class="passed">0publish 0.18-post
+ROX-Lib2 2.0.6-post</td>
+<td class="passed">0publish 0.18-post
+ROX-Lib2 2.0.6-post</td>
+</tr>
+<tr>
+<th>0.21</th>
+<td class="skipped">skipped</td>
+<td class="passed">0publish 0.18-post
+ROX-Lib2 2.0.6-post</td>
+<td class="passed">0publish 0.18-post
+ROX-Lib2 2.0.6-post</td>
+</tr>
+</table>
+
+<p>
+Green = Passed, Red = Failed, Yellow = Skipped. The contents of the cells show the versions of components used in the tests where you didn't specify the version (so 0test selected
+one for you).
+</p>
+
+<p>
+  We can see in this example that the unit-tests for 0compile 0.19 no longer pass, regardless of the version of Zero Install used.
+  This problem was caused by a change to the GNU-Hello test program it uses within its own tests. Ideally, programs should depend on their
+  test data using <b>&lt;requires&gt;</b> (see below), but 0compile actually needed to test downloading of the test code itself.
+  0compile 0.20 fails with older version of Zero Install due to a bug in the way "0launch --get-selections" generated the XML. 0compile 0.21 depends on
+  a later version explicitly, so the broken combination is skipped.
+</p>
+
+<p>
+If you specify a test matrix with more than two dimensions, 0test will generate a series of tables.
+</p>
+
+<h2 id="idm23422414790368">Other ways to specify versions</h2>
+
+<p>
+As well as passing simple version numbers, you can also allow 0test to choose a suitable version given some constraints. This is useful in test scripts:
+</p>
+
+<dl>
+<dt id="idm23422414789120">Ranges</dt>
+<dd>You can use "," to give a range of possible versions. This is useful with native packages where you don't know the exact version. For example, to test against any Python version 2.6.x (2.6 &lt;= version &lt; 2.7):
+<pre>
+$ 0test prog.xml http://repo.roscidus.com/python/python 2.6,2.7
+Passed
+ - prog 0.1, python v2.6.8-0.2
+</pre>
+</dd>
+<dt id="idm23422414787424">%nonlocal</dt>
+<dd>
+Don't select a local (i.e. unreleased) version to test against:
+<pre>
+$ 0test prog.xml
+Passed
+ - prog 0.1, lib <b>v1.11-post</b>
+
+$ 0test prog.xml http://example.com/lib <b>%nonlocal</b>
+Passed
+ - prog 0.1, lib <b>v1.11</b>
+</pre>
+</dd>
+</dl>
+
+<h2 id="idm23422414784608">Passing test arguments</h2>
+
+<p>
+  You can pass extra arguments to the test command, but you must put them after '--' to stop 0test interpreting them as arguments or versions. e.g. to run 0test on itself with verbose output:
+</p>
+
+<pre>
+  $ <b>0test alias:0test -- -v</b>
+</pre>
+
+<h2 id="idm23422414782768">Specifying a test command</h2>
+
+<p>
+  The <b>--test-command</b> option can be used to run the shell command of your choice, rather than the test
+  command given in the feed's <b>self-test</b> attribute. The command that would be executed if the implemention were run normally is available as $*.
+</p>
+    
+<p>
+  For example, to check that "rox --version" worked in versions 2.8 and 2.9 of
+  ROX-Filer:
+</p>
+    
+<pre>$ <b>0test -t '$* --version &gt; /dev/null' \
+    http://rox.sourceforge.net/2005/interfaces/ROX-Filer 2.8 2.9</b>
+Passed
+ - ROX-Filer v2.8
+ - ROX-Filer v2.9
+None skipped
+None failed
+</pre>
+
+<p>
+  You can use <b>--command</b> to select a different &lt;command&gt;. By default, the command used is "test" when run normally, or "run" when using <b>-t</b>. You can also set this to the empty string to select no command (useful with libraries). In that case, $1 is the directory itself rather than the command.
+</p>
+
+<h2 id="idm23422414777616">Test-only dependencies</h2>
+
+<p>
+  Starting from 0test 0.4, you can also use the &lt;command&gt; syntax instead of the self-test attribute. This allows passing extra arguments and specifying test-specific dependencies. For example:
+</p>
+
+<pre>
+  &lt;group&gt;
+    &lt;requires interface="http://example.com/somelib.xml"&gt;
+      ...
+    &lt;/requires&gt;
+    <b>&lt;command name="test" path="tests/testall.py"&gt;</b>
+      <b>&lt;requires interface="http://testing.com/testframework.xml"&gt;</b>
+	<b>&lt;environment insert="" mode="replace" name="TEST_FRAMEWORK"/&gt;</b>
+      <b>&lt;/requires&gt;</b>
+    <b>&lt;/command&gt;</b>
+    &lt;implementation id="." version="0.1-pre"/&gt;
+  &lt;/group&gt;
+</pre>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

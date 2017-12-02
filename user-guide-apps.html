@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Apps</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="open">
+<a href="users.html">For users 
+      </a><ul>
+<li class="open">
+<a href="user-guide-intro.html">Basic usage 
+      </a><ul>
+<li class="leaf"><a href="user-guide-intro.html">Introduction 
+      </a></li>
+<li class="leaf"><a href="user-guide-first-launch.html">First launch 
+      </a></li>
+<li class="leaf"><a href="user-guide-shortcuts.html">Making shortcuts 
+      </a></li>
+<li class="leaf"><a href="user-guide-apps.html" class="selected">Apps 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="user-guide-policy.html">Advanced usage 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm20445665571312">Using Apps</h2>
+
+<p>
+  Apps (introduced in 0install 1.9) work a bit like aliases, e.g.
+</p>
+
+<pre>
+$ <b>0install add rox http://rox.sourceforge.net/2005/interfaces/ROX-Filer</b>
+$ <b>rox --version</b>
+ROX-Filer 2.11
+</pre>
+
+<p>
+  The main difference is that apps store their current selections (in
+  <i>~/.config/0install.net/apps/rox/selections.xml</i> in this case). This
+  means that they start faster, because the solver isn't needed:
+</p>
+
+<pre>
+$ <b>0alias rox-alias http://rox.sourceforge.net/2005/interfaces/ROX-Filer</b>
+$ <b>0install add rox-app http://rox.sourceforge.net/2005/interfaces/ROX-Filer</b>
+
+$ <b>time rox-alias --version &gt; /dev/null</b>
+rox-alias --version &gt; /dev/null  0.12s user 0.02s system 91% cpu 0.144 total
+
+$ <b>time rox-app --version &gt; /dev/null</b>
+rox-app --version &gt; /dev/null  0.06s user 0.02s system 92% cpu 0.082 total
+</pre>
+
+<p>
+When run, they still trigger a background update if they haven't been
+updated for a while, and you can also update them manually:
+</p>
+
+<pre>
+$ <b>0install update rox</b>
+No updates found. Continuing with version 2.11.
+</pre>
+
+<p>
+They also remember any restrictions (e.g. --before).
+</p>
+
+<p>Each app also stores past selections (max one set per day) so if an
+  update goes wrong you can see what changed and roll-back easily:
+</p>
+
+<pre>
+$ <b>0install whatchanged 0publish</b>
+Last checked    : Wed Jun 27 20:24:19 2012
+Last update     : 2012-06-27
+Previous update : 2012-06-16
+
+http://0install.net/2007/interfaces/ZeroInstall.xml: 1.8-post -&gt; 1.9-post
+http://repo.roscidus.com/security/gnupg: new -&gt; 1.4.12-4
+
+To run using the previous selections, use:
+0install run /home/tal/.config/0install.net/apps/0publish/selections-2012-06-16.xml
+</pre>
+
+<p>
+  Starting with 0install 1.14, 0alias is deprecated, and trying to add an alias will
+  add an app instead.
+</p>
+
+<h3 id="idm20445665516192">Planned features</h3>
+
+<ul>
+  <li>Allow multiple shell commands for an app.</li>
+  <li>Switch desktop integration over to using apps.</li>
+</ul>
+
+
+<div class="quicklinks"><div class="row">
+<a href="user-guide-shortcuts.html"><img src="tango/go-prev.png" alt="" width="48" height="48"><br>Go back</a><a href="user-guide-policy.html"><img src="tango/go-next.png" alt="" width="48" height="48"><br>Continue</a>
+</div></div>
+ 
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

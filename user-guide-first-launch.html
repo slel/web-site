@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: First launch</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="open">
+<a href="users.html">For users 
+      </a><ul>
+<li class="open">
+<a href="user-guide-intro.html">Basic usage 
+      </a><ul>
+<li class="leaf"><a href="user-guide-intro.html">Introduction 
+      </a></li>
+<li class="leaf"><a href="user-guide-first-launch.html" class="selected">First launch 
+      </a></li>
+<li class="leaf"><a href="user-guide-shortcuts.html">Making shortcuts 
+      </a></li>
+<li class="leaf"><a href="user-guide-apps.html">Apps 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="user-guide-policy.html">Advanced usage 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm43582911299904">First Launch</h2>
+<p>
+  When launching a feed for the first time, 0install will download the
+  necessary files for you and store them in <a href="user-guide-cache.html">the cache</a>.
+  Next time, 0install will use these stored files, so you don't need to download the
+  program again. From time to time 0install will check for updates and offer to
+  download them. For example:
+</p>
+
+<pre>
+  $ 0launch http://repo.roscidus.com/games/openttd
+</pre>
+
+<table class="howitworks">
+ <tr><th colspan="2">1. Click Download</th></tr>
+ <tr>
+  <td class="image"><img src="screens/find-libraries.png" alt="" width="400" height="263"></td>
+  <td>
+  <p>The downloaded file says that <b>OpenTTD</b> requires various libraries (Freetype2, SDL, libgcc1, etc).
+Each library is identified by a web address (URL) in the same way that the main <b>OpenTTD</b> program was.
+0install downloads information about them in the same way and selects a compatible set of versions.
+The window displays a dialog box showing the program and all required libraries. Click <b>Download</b>.</p>
+  </td>
+ </tr>
+
+ <tr><th colspan="2">2. Wait for the download to finish</th></tr>
+ <tr>
+  <td class="image"><img src="screens/download-foo.png" alt="" width="400" height="336"></td>
+  <td>
+  <p>0install now downloads all the required archives (supported formats include tar.gz, tar.bz2, zip, 
+rpm and deb). It unpacks each one into its own directory and
+checks its contents against the <i>cryptographic digest</i>
+given in the (signed) feed file. If the archive has been changed since the feed was signed,
+the download will be rejected. If the archive hasn't been tampered with, it is stored in a cache directory
+(see <a href="sharing.html">sharing</a> for more information) in its own
+subdirectory, named after the digest. This ensures that no two downloads can
+conflict with each other.
+  </p>
+  </td>
+ </tr>
+</table>
+
+<div class="quicklinks"><div class="row">
+<a href="user-guide-intro.html"><img src="tango/go-prev.png" alt="" width="48" height="48"><br>Go back</a><a href="user-guide-shortcuts.html"><img src="tango/go-next.png" alt="" width="48" height="48"><br>Continue</a>
+</div></div>
+ 
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

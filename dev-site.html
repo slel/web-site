@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: The web-site</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="open">
+<a href="dev.html">For developers 
+      </a><ul>
+<li class="leaf"><a href="get-involved.html">Get involved 
+      </a></li>
+<li class="leaf"><a href="using-git.html">Using Git 
+      </a></li>
+<li class="leaf"><a href="injector-design.html">Design 
+      </a></li>
+<li class="leaf"><a href="solver.html">The Solver 
+      </a></li>
+<li class="leaf"><a href="json-api.html">JSON API 
+      </a></li>
+<li class="leaf"><a href="python-api/html/index.html">Python API 
+      </a></li>
+<li class="leaf"><a href="api-example.html">API example 
+      </a></li>
+<li class="leaf"><a href="dev-site.html" class="selected">The web-site 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm19827607302640">Developers: the 0install web-site</h2>
+
+<p>
+  The 0install.net site is held in a Git repository. If you want to work on it, you can
+  clone it like this:
+</p>
+
+<pre>
+  git clone https://github.com/0install/web-site.git
+</pre>
+
+<p>
+  Run <b>make</b> to generate the .html files from the .xml ones. The XML syntax is basically
+  HTML, but an XSLT stylesheet generates the navigation.
+</p>
+
+<p>
+  To add a new page:
+</p>
+
+<ul>
+  <li>Copy one of the existing .xml files to create the new page.</li>
+  <li>Add it to the Makefile so it gets built.</li>
+  <li>Add it to structure.xml to put it in the navigation.</li>
+  <li>Add it to Git with "git add page.xml".</li>
+</ul>
+
+<p>
+  To update the actual site:
+</p>
+
+<ul>
+  <li>If you don't have admin access, submit a pull request to the <a href="https://github.com/0install/web-site">GitHub "web-site" project</a>.</li>
+  <li>If you are an admin, run the <b>deploy-to-github-pages.sh</b> script. This will create a temporary subdirectory called <b>github-tmp</b>, run <b>make</b> it in, commit the generated files and push to the (auto-generated) <b>gh-pages</b> branch. The changes will appear immediately on the site.
+</li>
+</ul>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

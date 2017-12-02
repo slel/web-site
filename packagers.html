@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: For packagers</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="open">
+<a href="packagers.html" class="selected">For packagers 
+      </a><ul>
+<li class="closed"><a href="injector-packagers.html">Packaging guide 
+      </a></li>
+<li class="leaf"><a href="templates.html">Templates 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm27276149359088">Packagers</h2>
+
+<p>
+ This section is for people distributing software using Zero Install.
+</p>
+
+<dl>
+ <dt id="idm27276149312224"><a href="injector-packagers.html">Packaging guide</a></dt>
+ <dd>
+  This guide takes you through the steps involved in making a package available
+  through Zero Install. You will need to be able to upload (static) files to a
+  web-server.
+ </dd>
+
+ <dt id="idm27276149310448"><a href="templates.html">Templates</a></dt>
+ <dd>
+   Sample code packages which you can use as templates when creating a new program that will be distributed using 0install, or as examples for your own programs.
+ </dd>
+
+ <dt id="idm27276149309136"><a href="tools.html">Tools</a></dt>
+ <dd>
+   There are many tools available to make packaging easier.
+ </dd>
+
+</dl>
+
+<h3 id="idm27276149307792">Off-site documentation</h3>
+
+<dl>
+  <dt id="idm27276149307152"><a href="http://0install.de/docs/publishing/dotnet-libs/">Packaging .NET libraries</a></dt>
+  <dd>
+    This tutorial explains how to create feeds for a .NET application with a dependency on a .NET library using the Publishing Tools.
+</dd>
+ <dt id="idm27276149305760"><a href="http://rox.sourceforge.net/desktop/node/300">Compiling with SCons and GTK</a></dt>
+ <dd>
+  <p>Article showing how to use Zero Install in your build scripts to download the SCons build system and
+  use it to compile your program.</p>
+ </dd>
+
+ <dt id="idm27276149303984"><a href="http://rox.sourceforge.net/desktop/node/289">Easy GTK binary compatibility</a></dt>
+
+ <dd>
+  <p>This blog article shows how to use Zero Install to compile your program against older
+ versions of library headers than are the default on your system. Binaries created this way
+ work on a wider range of systems (all systems with a GTK version newer than the headers). Also,
+ since they download the required headers automatically, users don't need to have the headers
+ already on their system in order to compile your program.</p>
+ <p>
+ The binaries produced this way do not depend on Zero Install, so you can use Zero Install as
+ part of your build process even if you don't distribute the resulting binaries that way.
+ </p>
+ </dd>
+</dl>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

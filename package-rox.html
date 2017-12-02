@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Example: ROX-Filer</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="open">
+<a href="packagers.html">For packagers 
+      </a><ul>
+<li class="open">
+<a href="injector-packagers.html">Packaging guide 
+      </a><ul>
+<li class="leaf"><a href="packaging-concepts.html">Concepts 
+      </a></li>
+<li class="leaf"><a href="local-feeds.html">Local feeds 
+      </a></li>
+<li class="leaf"><a href="packaging-binaries.html">Packaging binaries 
+      </a></li>
+<li class="leaf"><a href="package-scons.html">0publish tutorial 
+      </a></li>
+<li class="leaf"><a href="injector-find.html">Example: Find 
+      </a></li>
+<li class="leaf"><a href="package-inkscape.html">Example: Inkscape 
+      </a></li>
+<li class="leaf"><a href="package-rox.html" class="selected">Example: ROX-Filer 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="templates.html">Templates 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm40881128250464">Example: Creating a binary for ROX-Filer</h2>
+
+<p>
+This guide shows some more advanced features of Zero Install:
+</p>
+
+<ul>
+ <li>Creating platform-specific binaries (ROX-Filer is written in C).</li>
+ <li>Local interfaces in source releases.</li>
+ <li>Adding extra feeds (the maintainer of the PPC and ix86 interfaces are
+different people, but users get the right binary automatically).</li>
+</ul>
+
+<p>
+This guide assumes you've already read <a href="injector-packagers.html">the packaging guide</a>, which
+explains how to create and publish interface files. We won't explain all the concepts in detail again, we'll
+just show how to script the steps.
+</p>
+
+<ol class="toc">
+<li><a href="#idm40881128246064">General operation</a></li>
+<li><a href="#idm40881128242800">Creating a binary of ROX-Filer</a></li>
+<li><a href="#idm40881128226496">Adding the archive to the interface</a></li>
+<li><a href="#idm40881128217504">Publishing the interface with Zero Install</a></li>
+</ol>
+
+<h2 id="idm40881128246064">General operation</h2>
+
+<p>
+<b>0publish</b> edits interface files in place. It loads the file, transforms it in some way (such as
+setting the release date, or adding a new implementation) and then writes it back out again. If the input
+file was signed, it will resign it when saving with the same key by default. You can also use it to add a
+signature, or to change the signing key.
+</p>
+
+<p>You can create an alias for <b>0publish</b> in the usual way, to save typing:</p>
+<pre>
+$ <b>0install add 0publish http://0install.net/2006/interfaces/0publish</b>
+</pre>
+
+<h2 id="idm40881128242800">Creating a binary of ROX-Filer</h2>
+
+<p>
+For this example we'll compile a binary of ROX-Filer for our platform (we'll assume there isn't
+one already) and make a feed for other people with the same platform (I'll use ppc64 for the examples).
+Start by creating an archive as normal:
+</p>
+
+<ol>
+<li>Download the ROX-Filer source release (and detached signature):
+<pre>
+$ <b>wget http://heanet.dl.sourceforge.net/sourceforge/rox/rox-2.4.1.tgz</b>
+$ <b>wget http://heanet.dl.sourceforge.net/sourceforge/rox/rox-2.4.1.tgz.sig</b>
+$ <b>gpg rox-2.4.1.tgz.sig</b>
+gpg: Signature made Fri 30 Dec 2005 17:32:53 GMT using DSA key ID 59A53CC1
+gpg: Good signature from "Thomas Leonard &lt;...&gt;"
+</pre>
+</li>
+
+<li>Build as normal:
+<pre>
+$ <b>tar xzf rox-2.4.1.tgz</b>
+$ <b>cd rox-2.4.1</b>
+$ <b>./ROX-Filer/AppRun --compile</b>
+</pre>
+</li>
+<li>Delete the debugging symbols and the <b>build</b> and <b>src</b> directories to save space:
+<pre>
+$ <b>rm -r ROX-Filer/{ROX-Filer.dbg,build,src}</b>
+</pre>
+</li>
+<li>The ROX-Filer source download includes a <i>local interface</i> file called <b>ROX-Filer.xml</b>.
+This allows people to register local versions using <b>0launch --feed</b>. Set the release date and architecture in it:
+<pre>
+$ <b>0publish --set-released 2006-02-26 ROX-Filer.xml</b>
+$ <b>0publish --set-arch Linux-ppc64 ROX-Filer.xml</b>
+</pre>
+<p>You can also edit it to change the name and description if you want. The file should now look like this:</p>
+<pre>
+&lt;?xml version='1.0'?&gt;
+&lt;interface xmlns='http://zero-install.sourceforge.net/2004/injector/interface'&gt;
+  &lt;name&gt;ROX-Filer-ppc64&lt;/name&gt;
+  &lt;summary&gt;PPC64 binaries for ROX-Filer&lt;/summary&gt;
+  &lt;description&gt;
+    ROX-Filer is a fast and powerful graphical file manager. It has full drag-and-drop support
+    and background file operations, and is highly configurable. It can also act as a pinboard,
+    allowing you to pin frequently used files to the desktop background.
+  &lt;/description&gt;
+  &lt;feed-for interface='http://rox.sourceforge.net/2005/interfaces/ROX-Filer'/&gt;
+  &lt;group main='ROX-Filer/AppRun'&gt;
+    &lt;implementation id="." version="2.4.1" <b>released='2006-02-26' arch='Linux-ppc64'</b>/&gt;
+  &lt;/group&gt;
+&lt;/interface&gt;
+</pre>
+</li>
+<li>Add the architecture to the directory name and tar it all up
+(we include the architecture in the directory and archive names for clarity
+only; you can name them whatever you like):
+<pre>
+$ <b>cd ..</b>
+$ <b>mv rox{,-linux-ppc64}-2.4.1</b>
+$ <b>tar czf rox-linux-ppc64-2.4.1{.tgz,}</b>
+</pre>
+</li>
+<li>Upload it somewhere. I'll assume <b>http://example.org/rox-linux-ppc64-2.4.1.tgz</b> in
+the following examples.</li>
+</ol>
+
+<h2 id="idm40881128226496">Adding the archive to the interface</h2>
+
+<p>
+To make our new binary available through Zero Install:
+</p>
+
+<ol id="archive">
+<li>Take a copy of the local interface from the archive. We'll use <b>0publish</b> to change
+the <b>id</b> from '<b>.</b>' to the archive's digest and to add an &lt;archive&gt; element:
+<pre>
+$ <b>cp rox-linux-ppc64-2.4.1/ROX-Filer.xml ROX-Filer-ppc64</b>
+$ <b>0publish ROX-Filer-ppc64 \
+    --archive-url http://example.org/rox-linux-ppc64-2.4.1.tgz  \
+    --archive-file rox-linux-ppc64-2.4.1.tgz \
+    --archive-extract rox-linux-ppc64-2.4.1</b>
+</pre>
+The local .tgz file is used by <b>0publish</b> to get the size and manifest digest. The extract
+value is used as the &lt;archive&gt;'s extract attribute and must match the name of the
+top-level directory in the archive.
+</li>
+
+</ol>
+
+<p>
+If you now view the <b>ROX-Filer-ppc64</b> file, you should see that <b>0publish</b> has
+converted the old &lt;implementation&gt; to give the digest and download location:
+</p>
+
+<pre>
+  &lt;group main="ROX-Filer/AppRun"&gt;
+    &lt;implementation arch="Linux-ppc64" id="sha1=2bce88f31415898760373fff900890a8719ab1e6" released="2006-02-26" version="2.4.1"&gt;
+      &lt;archive extract="rox-linux-ppc64-2.4.1" href="http://example.org/rox-linux-ppc64-2.4.1.tgz" size="1375566"/&gt;
+    &lt;/implementation&gt;
+  &lt;/group&gt;
+</pre>
+
+<p>
+You should be able to download and test your binary with this command:
+</p>
+<pre>
+$ <b>0launch ./ROX-Filer-ppc64</b>
+</pre>
+
+<h2 id="idm40881128217504">Publishing the interface with Zero Install</h2>
+
+<ol>
+<li>Set the uri at the top of the file to where-ever you're going to upload it:
+<pre>
+&lt;?xml version="1.0" ?&gt;
+&lt;interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface"
+	   <b>uri='http://example.com/2006/0launch/ROX-Filer-ppc'</b>&gt;
+</pre>
+<p>TODO: 0publish should have a working <b>--local</b> option! (note: from
+version 0.3, 0publish does support --local in this case, when creating a new interface)</p>
+</li>
+
+<li>Sign and upload the interface (see the <a href="injector-packagers.html">packaging guide</a>
+for information about creating, exporting and uploading your GPG key):
+<pre>
+$ <b>0publish --gpgsign ROX-Filer-ppc64</b>
+$ <b>mv ROX-Filer-ppc64 /var/www/...</b>
+</pre>
+</li>
+</ol>
+
+<p>
+Other users of ppc64 machines can now either run this directly, or add it as a feed (so it will
+be used by other programs trying to run ROX-Filer):
+</p>
+
+<pre>
+$ <b>0launch --feed http://example.com/2006/0launch/ROX-Filer-ppc</b>
+</pre>
+
+<p>
+You should now tell the maintainer of the master feed about this one, so that they can
+add a &lt;feed&gt; element to the master copy to save users from having to add the feed manually.
+For an example of a master interface with feeds for different architectures, take a look at the
+<b>&lt;feed&gt;</b> elements in <a href="http://rox.sourceforge.net/2005/interfaces/ROX-Filer">the real ROX-Filer interface</a>.
+</p>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

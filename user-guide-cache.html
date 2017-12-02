@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Cache and sharing</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="open">
+<a href="users.html">For users 
+      </a><ul>
+<li class="closed"><a href="user-guide-intro.html">Basic usage 
+      </a></li>
+<li class="open">
+<a href="user-guide-policy.html">Advanced usage 
+      </a><ul>
+<li class="leaf"><a href="user-guide-policy.html">Policy settings 
+      </a></li>
+<li class="leaf"><a href="user-guide-cache.html" class="selected">Cache and sharing 
+      </a></li>
+<li class="leaf"><a href="servers.html">Servers 
+      </a></li>
+<li class="leaf"><a href="walkthrough.html">Walk-through 
+      </a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm32747507944544">The Cache</h2>
+
+<p>
+  Everything 0install downloads from the net by default goes in <b>~/.cache/0install.net/</b>.
+  Every application/library unpacks into a directory in that cache. So,
+  there's one directory for ROX-Filer, and another for ClanBomber, etc. In fact,
+  there's one directory for every version of ROX-Filer, in case you want more than one
+  available. Every directory is uniquely named, so you'll never get conflicts
+  when trying to install two different programs.
+</p>
+
+<p>
+  The idea is that you don't need to backup <b>~/.cache</b>, because you can
+  always download the stuff again. For example, if you delete the whole
+  <b>~/.cache/0install.net/</b> directory and then click on ROX-Filer, it will
+  just prompt you to download it again. The cache is just to make things faster
+  (and work when offline), but you don't really need to worry about it.
+</p>
+
+<ol class="toc">
+<li><a href="#idm32747507940960">Sharing Implementations</a></li>
+<li><a href="#idm32747507933456">Removing Implementations</a></li>
+</ol>
+
+<h3 id="idm32747507940960">Sharing Implementations</h3>
+
+<h4>Between users of the same system</h4>
+
+<p>
+  0install can be configured to store its cache in <b>/var/cache/0install.net/</b>.
+  This allows sharing between users. The use of cryptographic digests makes
+  this safe; users don't need to trust each other not to put malicious code in
+  the shared cache.
+</p>
+
+<ul>
+  <li>See: <a href="sharing.html">Enabling sharing between users</a>
+</li>
+</ul>
+
+
+<h4>Between virtual machines</h4>
+
+<p>
+  You can also share the cache between virtual machines:
+</p>
+
+<ul>
+  <li>See: <a href="virtual.html">Enabling sharing between virtual machines</a>
+</li>
+</ul>
+
+<h4>Between machines using P2P</h4>
+
+<p>
+  Note: this is still experimental
+</p>
+
+<p>
+  Using <a href="0share.html">0share</a> you can locally distribute your implementations (versions of
+  programs) via a peer-to-peer protocol.
+</p>
+
+<h3 id="idm32747507933456">Removing Implementations</h3>
+
+<p>
+  If for some reason you would like to remove implementations from the
+  cache (it does not make your system any 'cleaner', but it does free some
+  disk space), you can do so using the Zero Install Cache dialog.
+</p>
+
+<p>
+  Click on the <b>Show Cache</b> button in the <b>Manage Programs</b> box to
+  get the cache explorer (or run "<b>0store manage</b>"). Select the versions
+  you don't need anymore and click on <b>Delete</b>.
+</p>
+
+<p style="text-align: center">
+  <img width="812" height="334" src="injector-cache.png" alt="Uninstalling programs">
+</p>
+
+<p>
+  Note: you can delete the entire cache, 0install will redownload whatever it needs later.
+</p>
+
+
+<div class="quicklinks"><div class="row">
+<a href="user-guide-policy.html"><img src="tango/go-prev.png" alt="" width="48" height="48"><br>Go back</a><a href="servers.html"><img src="tango/go-next.png" alt="" width="48" height="48"><br>Continue</a>
+</div></div>
+ 
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: For developers</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="open">
+<a href="dev.html" class="selected">For developers 
+      </a><ul>
+<li class="leaf"><a href="get-involved.html">Get involved 
+      </a></li>
+<li class="leaf"><a href="using-git.html">Using Git 
+      </a></li>
+<li class="leaf"><a href="injector-design.html">Design 
+      </a></li>
+<li class="leaf"><a href="solver.html">The Solver 
+      </a></li>
+<li class="leaf"><a href="json-api.html">JSON API 
+      </a></li>
+<li class="leaf"><a href="python-api/html/index.html">Python API 
+      </a></li>
+<li class="leaf"><a href="api-example.html">API example 
+      </a></li>
+<li class="leaf"><a href="dev-site.html">The web-site 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm44178095284720">Developers</h2>
+
+<p>
+ This section is for people developing 0install itself, or integrating it
+ into their own systems (for example, if you want to use 0install to manage
+ plugins for your application).
+</p>
+
+<p>
+  If you want to make programs available through 0install, see the <a href="packagers.html">packaging guide</a> instead.
+</p>
+
+<dl>
+ <dt id="idm44178095236208"><a href="get-involved.html">Get involved</a></dt>
+ <dd>
+   Suggestions on how to join the project.
+ </dd>
+
+ <dt id="idm44178095235008"><a href="using-git.html">Using Git</a></dt>
+ <dd>
+  How to get the very latest developer versions using Git.
+ </dd>
+
+ <dt id="idm44178095233792"><a href="injector-design.html">Design</a></dt>
+ <dd>
+  A more detailed description of the design of Zero Install.
+ </dd>
+
+ <dt id="idm44178095232576"><a href="dev-site.html">The web-site</a></dt>
+ <dd>
+   How to make changes to the 0install.net web-site.
+ </dd>
+</dl>
+
+<h3 id="idm44178095231248">The Python API</h3>
+
+<p>
+  The <b>0launch</b>/<b>0install</b> command-line interface to Zero Install is sufficient for most
+  purposes. However, sometimes you may want to use the Python library interface.
+  This is used by programs such as <b>0compile</b> and <b>0publish</b>, and is
+  also a useful reference for people wanting to modify 0install itself.
+</p>
+
+<dl>
+ <dt id="idm44178095228448"><a href="json-api.html">JSON API</a></dt>
+ <dd>
+   How to use 0install's functions from other programs via JSON.
+ </dd>
+ <dt id="idm44178095227200"><a href="python-api/html/index.html">Python API</a></dt>
+ <dd>
+   The reference documentation, generated automatically from the source code.
+ </dd>
+
+ <dt id="idm44178095225888"><a href="api-example.html">Using the API</a></dt>
+ <dd>A simple example showing how to get started with the Python API.</dd>
+</dl>
+
+<h3 id="idm44178095224480">Other guides</h3>
+
+<dl>
+
+  <dt id="idm44178095223808"><a href="http://0install.de/dev/api/">.NET API</a></dt>
+  <dd>
+    Zero Install provides a .NET API that can be used to embed Zero Install functionality in your own applications.
+  </dd>
+
+ <dt id="idm44178095222416"><a href="http://gfxmonk.net/2011/08/02/using-zero-install-as-a-plugin-manager.html">Using Zero-Install as a Plugin Manager</a></dt>
+ <dd>
+   A blog post showing how 0install can be used to manage plugins for your application.
+ </dd>
+
+</dl>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Developers</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="open">
+<a href="tools.html">Tool reference 
+      </a><ul>
+<li class="leaf"><a href="0bootstrap.html">0bootstrap 
+      </a></li>
+<li class="open">
+<a href="0compile.html">0compile 
+      </a><ul>
+<li class="leaf"><a href="0compile-dev.html" class="selected">Developers 
+      </a></li>
+<li class="leaf"><a href="0compile-chroot.html">Chroot Build 
+      </a></li>
+<li class="leaf"><a href="0compile-scons.html">Example: SCons 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="ebox.html">ebox 
+      </a></li>
+<li class="leaf"><a href="0export.html">0export 
+      </a></li>
+<li class="leaf"><a href="feedlint.html">FeedLint 
+      </a></li>
+<li class="leaf"><a href="make-headers.html">Make-headers 
+      </a></li>
+<li class="leaf"><a href="0mirror.html">0mirror 
+      </a></li>
+<li class="leaf"><a href="pkg2zero.html">pkg2zero 
+      </a></li>
+<li class="leaf"><a href="0publish.html">0publish 
+      </a></li>
+<li class="closed"><a href="0release.html">0release 
+      </a></li>
+<li class="leaf"><a href="0share.html">0share 
+      </a></li>
+<li class="leaf"><a href="0template.html">0template 
+      </a></li>
+<li class="leaf"><a href="0repo.html">0repo 
+      </a></li>
+<li class="leaf"><a href="0test.html">0test 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm28243712383968">0compile: Developers</h2>
+
+<p>
+  This page explains how to publish source code using Zero Install. Publishing source this way means that:
+</p>
+
+<ul>
+  <li>Users can compile it easily <a href="0compile.html">using 0compile</a>.</li>
+  <li>Build dependencies, such as header files and build tools, can be downloaded automatically.</li>
+  <li>
+<a href="0release.html">0release</a> can automatically compile binaries for your software during the release process.</li>
+</ul>
+
+<h2 id="idm28243712380160">Contents</h2>
+
+<ol class="toc">
+<li><a href="#idm28243712379280">Making source available</a></li>
+<li><a href="#idm28243712355648">Customising the binary implementation</a></li>
+<li><a href="#idm28243712341376">Pinning version ranges</a></li>
+<li><a href="#idm28243712336208">Tips</a></li>
+<li><a href="#idm28243712326528">Examples</a></li>
+<li><a href="#idm28243712324880">Further reading</a></li>
+</ol>
+
+<h2 id="idm28243712379280">Making source available</h2>
+
+<p>
+  There are two common situations:
+</p>
+
+<ul>
+  <li>You already have a source tarball somewhere and you want to publish an XML feed saying how to download and compile it (ideally, no changes should be needed to support 0install). For this, you should first read the <a href="packaging-binaries.html">Guide to packaging binaries</a>.</li>
+  <li>You have a development checkout (e.g. a Git clone or similar) and you want to say how to compile it. For this, you should first read the page about <a href="local-feeds.html">local feeds</a>.</li>
+</ul>
+
+<p>
+To make source code available for others to use you need to add source
+implementations to the program's feed file. This is almost exactly the same as
+adding binaries, except that you give <b>src</b> as the machine (CPU) type:
+</p>
+
+<p style="text-align: center">
+<img width="676" height="456" src="screens/add-source-impl.png" alt="Adding a source implementation">
+</p>
+
+<p>
+  (if you want to script this process, take a look at <a href="0template.html">0template</a>)
+</p>
+
+<p>
+  You can also edit the XML directly, which gives more control. A minimal source implementation might look like this:
+</p>
+
+<pre>
+&lt;implementation <b>arch="*-src"</b> id="." version="0.1-pre"&gt;
+  &lt;command <b>name='compile'</b> path='Makefile'&gt;
+    &lt;runner interface='http://repo.roscidus.com/devel/make'&gt;
+      &lt;arg&gt;-f&lt;/arg&gt;
+    &lt;/runner&gt;
+  &lt;/command&gt;
+&lt;/implementation&gt;
+</pre>
+
+<p>
+  Note: you only need to use <b>arch='*-src'</b> to publish implementations for things that need to be compiled. Shell scripts, etc should not be marked as source code; use <b>arch="*-*"</b> instead (which is the default anyway if <b>arch</b> is not given). For header files (-dev packages), there will often be a source implementation that generates the header files, but the resulting headers are not source (and will often be architecture-specific, e.g. "Linux-i386").
+</p>
+
+<p>The job of the <b>compile</b> command is to call the actual build system.
+It is executed inside the <b>build</b> directory (<b>$BUILDDIR</b>).
+It must compile the source in <b>$SRCDIR</b>, putting the final result (ready for distribution) in <b>$DISTDIR</b>.
+The path to the generated feed for the new binary is <b>$BINARYFEED</b>, if you need it during the build.
+</p>
+
+<p>
+  Instead of giving a &lt;runner&gt;, you may prefer to use a shell command. This is useful if you need to run more than one command. However, if the command starts to get complicated, you should move it to a script, either inside the main source archive or in a separate dependency, and just set this attribute to the command to run the script):
+</p>
+
+<pre>
+&lt;implementation arch="*-src" id="." version="0.1-pre"&gt;
+  &lt;command name='compile'
+    <b>shell-command='"$SRCDIR/configure" --prefix="$DISTDIR" &amp;&amp; make install'</b>/&gt;
+
+  &lt;requires interface='http://repo.roscidus.com/devel/make'&gt;
+    &lt;executable-in-path name='make'/&gt;
+  &lt;/requires&gt;
+&lt;/implementation&gt;
+</pre>
+
+<div class="note">2013-04-03: starting with 0compile 1.1, this even works on Windows (it uses win-bash).</div>
+
+<p>
+There are also some extra attributes you can add to the <b>implementation</b> element:
+</p>
+
+<dl>
+ <dt id="idm28243712359920">compile:binary-main</dt>
+ <dd>Deprecated. Use &lt;compile:implementation&gt; instead (see below).</dd>
+
+ <dt id="idm28243712358992">compile:dup-src</dt>
+ <dd>Some programs insist on creating files in their source directory, which is
+typically a read-only directory when using Zero Install. In this case, set
+<b>compile:dup-src='true'</b> and 0compile will copy everything in $SRCDIR
+into 'build' before building.</dd>
+
+ <dt id="idm28243712357520">compile:binary-lib-mappings (binary library major mappings)</dt>
+ <dd>This is needed if you want to use 0install to compile a -dev package (containing header files) that works with a distribution-provided runtime package; see <a href="make-headers.html">MakeHeaders</a> for details.</dd>
+
+</dl>
+
+<h2 id="idm28243712355648">Customising the binary implementation</h2>
+
+<p>
+  You can specify a template &lt;implementation&gt; for the binary using &lt;compile:implementation&gt;. You can use this, for example, to add &lt;command&gt; elements to it. Here's a more complex example for a Java program:
+</p>
+
+<pre>
+  ... xmlns:compile="http://zero-install.sourceforge.net/2006/namespaces/0compile" ...
+
+  &lt;implementation <b>arch="*-src"</b> id="." version="0.1-pre"&gt;
+
+    <b>&lt;command name="compile" path="src/Makefile"&gt;</b>
+      &lt;runner interface='http://repo.roscidus.com/devel/make'&gt;
+        &lt;arg&gt;-f&lt;/arg&gt;
+      &lt;/runner&gt;
+
+      <b>&lt;compile:implementation arch='*-*'&gt;</b>
+        &lt;environment name='CLASSPATH' insert='.'/&gt;
+        &lt;requires interface="http://repo.roscidus.com/utils/graphviz"/&gt;
+        <b>&lt;command name='run'&gt;</b>
+          &lt;runner interface='http://repo.roscidus.com/java/openjdk-jre'/&gt;
+          &lt;arg&gt;com.example.MainClass&lt;/arg&gt;
+        &lt;/command&gt;
+      &lt;/compile:implementation&gt;
+    &lt;/command&gt;
+
+    &lt;requires interface="http://repo.roscidus.com/java/iris" compile:include-binary='true'/&gt;
+    &lt;requires interface="http://repo.roscidus.com/java/openjdk-jdk"&gt;
+      &lt;environment name='PATH' insert='bin'/&gt;
+    &lt;/requires&gt;
+  &lt;/implementation&gt;
+</pre>
+
+<p>The interesting bits here are:</p>
+
+<dl>
+  <dt id="idm28243712350256">arch="*-src"</dt>
+<dd>tells us that the root &lt;implementation&gt; describes some source code.</dd>
+  <dt id="idm28243712349408">&lt;compile:implementation&gt;</dt>
+<dd>this is the template for the implementation that will be created by the compile.</dd>
+  <dt id="idm28243712348608">arch='*-*'</dt>
+<dd>indicates that the generated binary is platform independent (Java bytecode).</dd>
+  <dt id="idm28243712347840">&lt;command name='run'&gt;</dt>
+<dd>says how to run the resulting binary (by using the Java runtime).</dd>
+</dl>
+
+<p>The dependencies are:</p>
+
+<dl>
+<dt id="idm28243712346272">graphviz and openjdk-jre</dt>
+<dd>only used at run-time (since they occur inside the &lt;compile:implementation&gt;).</dd>
+
+<dt id="idm28243712345328">openjdk-jdk</dt>
+<dd>only used at compile-time (occurs directly inside the source &lt;implementation&gt;).</dd>
+
+<dt id="idm28243712344384">iris</dt>
+<dd>used at compile-time and at run-time (has compile:include-binary attribute).</dd>
+</dl>
+
+<p>
+  Finally, there is a <b>compile:if-0install-version</b> attribute that you can place on any element in the template.
+  0compile will convert this to a plain <b>if-0install-version</b> in the generated output
+  (you can't use <b>if-0install-version</b> directly because 0install would strip them out as appropriate for its version before 0compile saw them).
+</p>
+
+<h2 id="idm28243712341376">Pinning version ranges</h2>
+
+<p>
+  Sometimes, you have a build time dependency with a wide range of possible versions, but the generated binary will have a runtime
+  dependency on whichever version was used to compile it.
+  The <b>compile:pin-components</b> attribute on a <b>&lt;version&gt;</b> element in the template will expand into <b>before</b> and <b>after</b>
+  attributes that require the binary version to match the first <i>n</i> components of the version used to compile it. For example, if
+  this program is compiled using Python 2.7.3, then the binary will have <b>&lt;version not-before='2.7' before='2.8'/&gt;</b>:
+</p>
+
+<pre>
+&lt;compile:implementation&gt;
+  &lt;runner interface='http://repo.roscidus.com/python/python'&gt;
+    &lt;version compile:pin-components="2"/&gt;
+  &lt;/runner&gt;
+&lt;/compile:implementation&gt;
+</pre>
+
+<p>(added in 0compile 1.4)</p>
+
+
+<h2 id="idm28243712336208">Tips</h2>
+
+<dl>
+<dt id="idm28243712335536">Using a separate source feed</dt>
+<dd>
+<p>
+You can keep the source implementations in a separate file (<b>MyProg-src.xml</b>) and add a feed from
+the main feed, e.g.:
+</p>
+
+<pre>
+  &lt;feed src='http://mysite/interfaces/MyProg<b>-src</b>.xml' <b>arch='*-src'</b>/&gt;
+</pre>
+
+<p>
+The <b>arch</b> attribute lets the injector know that it doesn't need to fetch this file unless
+it's looking for source code.
+</p>
+</dd>
+
+<dt id="idm28243712331424">Making library headers available (-dev packages)</dt>
+<dd>
+<p>
+See <a href="make-headers.html">Make-headers</a> for information about publishing library source and -dev packages.
+</p>
+</dd>
+
+ <dt id="idm28243712329408">Python distutils</dt>
+ <dd>
+<p>
+ You should use the <b>--build-base</b> option to make distutils build to 0compile's build directory, not under the source code (which is read-only). Unfortunately, this option
+ isn't available with the <b>install</b> command, so you have to do the build in two steps. A typical command is:
+ </p>
+ <pre>cd "$SRCDIR" &amp;&amp;
+python setup.py build --build-base="$BUILDDIR/build" &amp;&amp;
+cd "$BUILDDIR" &amp;&amp;
+python "$SRCDIR"/setup.py install --home="$DISTDIR" --skip-build</pre>
+ </dd>
+</dl>
+
+<h2 id="idm28243712326528">Examples</h2>
+
+<p>There are some <a href="templates.html">template projects</a> which can be used as a starting point for publishing your own software for various languages and build systems.</p>
+
+<h2 id="idm28243712324880">Further reading</h2>
+
+<dl>
+ <dt id="idm28243712324208"><a href="0compile-scons.html">Example: SCons</a></dt>
+ <dd>This example shows how to compile a simple "Hello world" program using
+ the SCons build system. Both the source and SCons are fetched using Zero
+ Install.</dd>
+</dl>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

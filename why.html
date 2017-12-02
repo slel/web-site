@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: About 0install</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="open">
+<a href="why.html" class="selected">About 0install 
+      </a><ul>
+<li class="leaf"><a href="perspectives.html">Perspectives 
+      </a></li>
+<li class="leaf"><a href="comparison.html">Comparison 
+      </a></li>
+<li class="leaf"><a href="why-not.html">Why not? 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm30473178583536">About 0install</h2>
+
+<p>
+Zero Install is a decentralised cross-platform software
+installation system available under the LGPL. It allows software
+developers to publish programs directly from their own web-sites,
+while supporting features familiar from centralised distribution
+repositories such as shared libraries, automatic updates and digital
+signatures. It is intended to complement, rather than replace, the
+operating system's package management. 0install packages never
+interfere with those provided by the distribution.
+</p>
+<p style="float: right; padding-left: 1em;">
+  <a href="injector-feeds.html"><img width="263" height="364" src="screens/manage-apps-narrow.png" alt="0desktop --manage"></a>
+</p>
+<p>
+0install does not define a new packaging format; unmodified tarballs
+or zip archives can be used. Instead, it defines an XML metadata
+format to describe these packages and the dependencies between them. A
+single metadata file can be used on multiple platforms (e.g. Ubuntu,
+Debian, Fedora, openSUSE, Mac OS X and Windows), assuming binary or
+source archives are available that work on those systems.
+</p>
+<p>
+0install also has some interesting features not often found in
+traditional package managers. For example, while it will share
+libraries whenever possible, it can always install multiple versions
+of a package in parallel when there are conflicting requirements.
+Installation is always side-effect-free (each package is unpacked to
+its own directory and will not touch shared directories such as
+/usr/bin), making it ideal for use with sandboxing technologies and
+virtualisation.
+</p>
+<p>
+The XML file describing the program's requirements can also be
+included in a source-code repository, allowing full dependency
+handling for unreleased developer versions. For example, a user can
+clone a Git repository and build and test the program, automatically
+downloading newer versions of libraries where necessary, without
+interfering with the versions of those libraries installed by their
+distribution, which continue to be used for other software.
+</p>
+<p>
+Started in 2003, 0install is developed by volunteers from around the world;
+contributors include Aleksey Lim, Anders F Björklund, Bastian Eicher, Chris
+Leick, Daniel Tschan, Dave Abrahams, Frank Richter, Mark Seaborn, Michel
+Alexandre Salim, Pino Toscano, Rene Lopez, Thomas Leonard, Tim Cuthbertson and
+Tim Diels.
+</p>
+<p>
+More than one thousand packages are currently available and you can easily
+<a href="packagers.html">publish your own programs</a>. Zero Install itself
+is available from the official repositories of most Linux distributions
+(including Arch, Debian, Fedora, Gentoo, Mint, openSUSE and Ubuntu).
+</p>
+
+<h3 id="idm30473178529328">Why 0install?</h3>
+
+<p>
+  Click one of the links below to find out why you may want to use 0install.
+</p>
+
+<dl>
+    <dt id="idm30473178528112"><a href="perspectives.html">By perspective</a></dt>
+<dd>How 0install benefits users, administrators, developers and distributions.</dd>
+    <dt id="idm30473178527008"><a href="comparison.html">Compared to other systems</a></dt>
+<dd>Why you may prefer 0install over another project.</dd>
+    <dt id="idm30473178525888"><a href="features.html">Cool features</a></dt>
+<dd>Some key features: native packager integration, sharing and security.</dd>
+    <dt id="idm30473178524800"><a href="why-not.html">Why not?</a></dt>
+<dd>Feedback collected from projects not using 0install.</dd>
+</dl>
+
+<h3 id="idm30473178523600">More documentation</h3>
+
+<ul>
+  <li><a href="doc.html">Tutorials, guides and reference material</a></li>
+  <li><a href="faq.html">Frequently Asked Questions</a></li>
+</ul>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

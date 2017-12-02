@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: 0bootstrap</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="open">
+<a href="tools.html">Tool reference 
+      </a><ul>
+<li class="leaf"><a href="0bootstrap.html" class="selected">0bootstrap 
+      </a></li>
+<li class="closed"><a href="0compile.html">0compile 
+      </a></li>
+<li class="leaf"><a href="ebox.html">ebox 
+      </a></li>
+<li class="leaf"><a href="0export.html">0export 
+      </a></li>
+<li class="leaf"><a href="feedlint.html">FeedLint 
+      </a></li>
+<li class="leaf"><a href="make-headers.html">Make-headers 
+      </a></li>
+<li class="leaf"><a href="0mirror.html">0mirror 
+      </a></li>
+<li class="leaf"><a href="pkg2zero.html">pkg2zero 
+      </a></li>
+<li class="leaf"><a href="0publish.html">0publish 
+      </a></li>
+<li class="closed"><a href="0release.html">0release 
+      </a></li>
+<li class="leaf"><a href="0share.html">0share 
+      </a></li>
+<li class="leaf"><a href="0template.html">0template 
+      </a></li>
+<li class="leaf"><a href="0repo.html">0repo 
+      </a></li>
+<li class="leaf"><a href="0test.html">0test 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<table><tr>
+<td style="vertical-align: top">
+<h2>0bootstrap</h2>
+
+<p>
+<b>0bootstrap</b> generates a native package that installs a 0install launcher.
+</p>
+
+<p><strong>This program is not ready for use yet.</strong></p>
+
+<p>
+Normally, a launcher is created by passing its name (a URI) to the 0desktop
+command (or "Add New Program"). This downloads the appropriate feeds, their
+icons - if available, and makes a shortcut (creates a launcher, a .desktop file).
+</p>
+
+<p>
+However, it is sometimes useful to bundle such a launcher and its icon
+together in a .deb package (for example), so that it can be installed
+on machines that don't have Zero Install available initially -
+by using the standard native package installation procedure.
+</p>
+
+</td>
+<td style="vertical-align: top"><div class="program"><table>
+<tr>
+<th>Name</th>
+<td>0bootstrap</td>
+</tr>
+<tr>
+<th>Maintainer</th>
+<td>Thomas Leonard</td>
+</tr>
+<tr>
+<th>License</th>
+<td>GNU General Public License</td>
+</tr>
+<tr>
+<th>Run it</th>
+<td><a href="http://0install.net/tools/0bootstrap.xml">Zero Install feed</a></td>
+</tr>
+<tr>
+<th>SCM</th>
+<td><a href="https://github.com/0install/0bootstrap">GIT repository</a></td>
+</tr>
+</table></div></td>
+</tr></table>
+
+<p>
+0bootstrap takes the URI of a program and creates a native package;
+currently the .deb and .rpm package formats are supported by the tool.
+</p>
+
+<p>
+Programs launched using these packages are added to the Zero Install cache
+and are therefore still <a href="sharing.html">shared between users</a>,
+and will get updates over the web where possible.
+</p>
+
+<ol class="toc">
+<li><a href="#idm25702786281776">Using a 0bootstrap package</a></li>
+<li><a href="#idm25702786271440">Current status</a></li>
+<li><a href="#idm25702786270624">Installing 0bootstrap</a></li>
+<li><a href="#idm25702786267888">Creating a package for your program</a></li>
+<li><a href="#idm25702786265952">FAQ</a></li>
+</ol>
+
+<h2 id="idm25702786281776">Using a 0bootstrap package</h2>
+
+<p>Open the file with your file manager, or run "<b>gdebi-gtk edit.deb</b>" in a terminal:</p>
+
+<p style="text-align: center">
+  <img width="552" height="432" src="screens/0bootstrap-install.png" alt="Installing a 0bootstrap native package">
+</p>
+
+<p>The package will require Zero Install in order to install, as seen in the Details view:</p>
+
+<p style="text-align: center">
+  <img width="402" height="232" src="screens/0bootstrap-details.png" alt="Dependency details">
+</p>
+
+<p>Installing native packages requires authentication.</p>
+
+<p style="text-align: center">
+  <img width="491" height="299" src="screens/0bootstrap-authenticate.png" alt="Authenticate">
+</p>
+
+<p>The installation will add the program to your menus.</p>
+
+<p style="text-align: center">
+  <img width="509" height="228" src="screens/0bootstrap-finish.png" alt="Installation finished">
+</p>
+
+<h2 id="idm25702786271440">Current status</h2>
+
+<p>
+This program is not yet released.
+</p>
+
+<h2 id="idm25702786270624">Installing 0bootstrap</h2>
+
+<p>
+You can download <b>0bootstrap</b> and create a short-cut to it in the usual way:
+</p>
+
+<pre>$ 0install add 0bootstrap http://0install.net/tools/0bootstrap.xml</pre>
+
+
+<p>
+Before the program is released, you need to run it from the source repository:
+</p>
+
+<pre>$ git clone git://zero-install.git.sourceforge.net/gitroot/zero-install/bootstrap
+$ cd bootstrap
+$ 0launch --feed 0bootstrap.xml
+$ 0install add 0bootstrap 0bootstrap.xml</pre>
+
+<h2 id="idm25702786267888">Creating a package for your program</h2>
+
+<p>
+Run 0bootstrap, passing in the package format and the name (URI) of the main program.
+For example, to create an Ubuntu package for Edit:
+</p>
+
+<pre>
+$ 0bootstrap --format=deb http://rox.sourceforge.net/2005/interfaces/Edit
+</pre>
+
+<p>
+The resulting edit.deb package can now be installed on a Ubuntu machine.
+</p>
+
+<h2 id="idm25702786265952">FAQ</h2>
+
+<dl>
+<dt id="idm25702786265216">What about security?</dt>
+
+<dd>Installing a package isn't a great way to make a shortcut. The normal
+Zero Install process of dragging a feed link to a trusted installation program
+is much better. However, distributions have been very slow to support this.
+0bootstrap is an attempt to boot-strap the adoption process. The native package
+is required to work with the operating system's package installation tools,
+and can be automatically created by a web service given the feed's URI.
+</dd>
+
+</dl>
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

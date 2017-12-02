@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Local feeds</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="open">
+<a href="packagers.html">For packagers 
+      </a><ul>
+<li class="open">
+<a href="injector-packagers.html">Packaging guide 
+      </a><ul>
+<li class="leaf"><a href="packaging-concepts.html">Concepts 
+      </a></li>
+<li class="leaf"><a href="local-feeds.html" class="selected">Local feeds 
+      </a></li>
+<li class="leaf"><a href="packaging-binaries.html">Packaging binaries 
+      </a></li>
+<li class="leaf"><a href="package-scons.html">0publish tutorial 
+      </a></li>
+<li class="leaf"><a href="injector-find.html">Example: Find 
+      </a></li>
+<li class="leaf"><a href="package-inkscape.html">Example: Inkscape 
+      </a></li>
+<li class="leaf"><a href="package-rox.html">Example: ROX-Filer 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="templates.html">Templates 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm20718629706848">Local feeds</h2>
+
+<p>
+  Normally, 0install downloads a feed from the web, selects a version, downloads the archive for that version, and runs it. However, 0install can also be used locally (e.g. to run a program you are currently writing, which hasn't been released yet). There are several reasons why you might want to do this:
+</p>
+
+<ul>
+  <li>0install can select and download your program's build or runtime dependencies.</li>
+  <li>It provides a cross-platform way to set environment variables and start your program.</li>
+  <li>You can use <a href="0release.html">0release</a> to generate releases automatically.</li>
+</ul>
+
+<h3 id="idm20718629703456">A simple example</h3>
+
+<p>
+  Let's say you have a simple Python 2 program, hello.py:
+</p>
+
+<pre>
+print "Hello World!"
+</pre>
+
+<p>
+  You could make this runnable by specifying a <a href="http://en.wikipedia.org/wiki/Shebang_%28Unix%29">shebang line</a>. But that wouldn't work on Windows (which doesn't support them). Also, different versions of Linux need different lines (e.g. "#!/usr/bin/python" on Debian, but "#!/usr/bin/python<b>2</b>" on Arch).
+</p>
+
+<p>
+  Instead, we can create a <i>local feed</i> to say how to run it. Create <b>hello.xml</b> in the same directory:
+</p>
+
+<pre>&lt;?xml version="1.0" ?&gt;
+&lt;interface xmlns="http://zero-install.sourceforge.net/2004/injector/interface"&gt;
+  &lt;name&gt;<b>Hello</b>&lt;/name&gt;
+  &lt;summary&gt;<b>minimal demonstration program</b>&lt;/summary&gt;
+
+  &lt;implementation <b>id="."</b> version="<b>0.1-pre</b>"&gt;
+    &lt;command name='run' path='<b>hello.py</b>'&gt;
+      &lt;runner interface='<b>http://repo.roscidus.com/python/python</b>'&gt;
+        &lt;version <b>before='3'</b>/&gt;
+      &lt;/runner&gt;
+    &lt;/command&gt;
+  &lt;/implementation&gt;
+&lt;/interface&gt;
+</pre>
+
+<p>
+  Setting <b>id="."</b> says that the implementation of this interface is the directory containing the feed (whereas normally we'd specify a digest and a URL from which to download the archive).
+</p>
+
+<p>
+  There are two other differences to note: there is no digital signature at the end (we assume that no attacker could intercept the file between your harddisk and you ;-), and the version number ends in a modifier (<b>-pre</b> in this case), showing that it hasn't been released.
+</p>
+
+<p>
+  You can now use this feed with the usual 0install commands. For example:
+</p>
+
+<pre>
+$ <b>0launch hello.xml</b>
+Hello World!
+
+$ <b>0install add hello-dev hello.xml</b>
+$ <b>hello-dev</b>
+Hello World!
+
+$ <b>0install select hello.xml</b>
+- URI: /home/bob/hello/hello.xml
+  Version: 0.1-pre
+  Path: /home/bob/hello
+  - URI: http://repo.roscidus.com/python/python
+    Version: 2.7.3
+    Path: (package:deb:python2.7:2.7.3:x86_64)
+</pre>
+
+<p>
+This will work on Linux, MacOS X, Windows, etc.
+</p>
+
+<h3 id="idm20718629689920">Next steps</h3>
+
+<p>Some more things you can do with your new local feed:</p>
+
+<ul>
+  <li>Depend on other libraries or tools (see <a href="interface-spec.html">the feed specification</a> for reference).</li>
+  <li>Compile source code using <a href="0compile-dev.html">0compile</a>.</li>
+  <li>Make a release using <a href="0release.html">0release</a>.</li>
+  <li>Test against different versions of dependencies using <a href="0test.html">0test</a>.</li>
+</ul>
+
+<p>See the <a href="templates.html">example templates</a> for projects in different languages and using various build systems.</p>
+
+<div class="quicklinks"><div class="row">
+<a href="packaging-concepts.html"><img src="tango/go-prev.png" alt="" width="48" height="48"><br>Go back</a><a href="packaging-binaries.html"><img src="tango/go-next.png" alt="" width="48" height="48"><br>Continue</a>
+</div></div>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

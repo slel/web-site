@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Compiled binaries</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="open">
+<a href="tools.html">Tool reference 
+      </a><ul>
+<li class="leaf"><a href="0bootstrap.html">0bootstrap 
+      </a></li>
+<li class="closed"><a href="0compile.html">0compile 
+      </a></li>
+<li class="leaf"><a href="ebox.html">ebox 
+      </a></li>
+<li class="leaf"><a href="0export.html">0export 
+      </a></li>
+<li class="leaf"><a href="feedlint.html">FeedLint 
+      </a></li>
+<li class="leaf"><a href="make-headers.html">Make-headers 
+      </a></li>
+<li class="leaf"><a href="0mirror.html">0mirror 
+      </a></li>
+<li class="leaf"><a href="pkg2zero.html">pkg2zero 
+      </a></li>
+<li class="leaf"><a href="0publish.html">0publish 
+      </a></li>
+<li class="open">
+<a href="0release.html">0release 
+      </a><ul>
+<li class="leaf"><a href="0release-phases.html">Customisation 
+      </a></li>
+<li class="leaf"><a href="0release-binaries.html" class="selected">Compiled binaries 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="0share.html">0share 
+      </a></li>
+<li class="leaf"><a href="0template.html">0template 
+      </a></li>
+<li class="leaf"><a href="0repo.html">0repo 
+      </a></li>
+<li class="leaf"><a href="0test.html">0test 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm39816802106448">Releases with source and binary packages</h2>
+
+<p>
+<a href="0release.html">0release</a> can be used to create releases of your software from a version control system.
+The main page described how to make releases of programs which are architecture-independent (e.g. programs written
+in Python) where a single package is produced. This page explains what happens for programs which must be compiled
+for different architectures (e.g. C programs).
+</p>
+
+<p>
+The extended release process looks like this:
+</p>
+
+<p>
+<img src="UML/release-process-binaries.png" width="515" height="655" alt="The release process with binary packages">
+</p>
+
+<p>TODO: 0release doesn't currently unit-test the binaries it produces</p>
+
+<!--
+<p>
+The main complication here is that compiling the binaries may require sending
+the release candidate source package to other machines (real or virtual) and
+then collecting the resulting packages.
+</p>
+-->
+
+<p>
+After generating an archive and a feed for the source code release candidate (where <b>arch='*-src'</b>), 0release also
+compiles a binary for the host system (using <a href="0compile.html">0compile</a>). It uploads both the source and binary
+archive and publishes both in the Zero Install feed.
+</p>
+
+<p>
+For an example of a simple binary package that works this way, have a look at the
+<a href="http://repo.or.cz/w/0release.git?a=blob;f=tests/c-prog.tgz;h=ae1f06864c70f65fdef5a00065fb82eec809d6dc;hb=a7bce06b6494407b2d80124c65f13493e3b44378">c-prog.tgz</a> package in 0release's tests directory:
+</p>
+
+<pre>
+$ <b>tar xzf c-prog.tgz</b>
+$ <b>mkdir release-c-prog</b>
+$ <b>cd release-c-prog</b>
+$ <b>0launch http://0install.net/2007/interfaces/0release.xml ../c-prog/c-prog.xml</b>
+</pre>
+
+<h2 id="idm39816802096512">Compiling on multiple systems</h2>
+  
+<p>
+  To build binaries for multiple architectures, you'll need to create a configuration file listing the available <i>builders</i>.
+  0release uses the <a href="http://www.freedesktop.org/wiki/Specifications/basedir-spec">Base Directory Specification</a> to find
+  its configuration files; with the default settings, you need to create the file <b>~/.config/0install.net/0release/builders.conf</b>.
+</p>
+
+<p>
+  The <b>builders.conf</b> file has a [global] section listing the builders to use, followed by one section for each builder. Each builder can have three commands
+  specified: one to start the builder (optional), one the actually do the build, and one to shutdown the builder (optional). Here is an example configuration:
+</p>
+
+<table class="fixed"><td><pre>
+[global]
+builders = host, freebsd
+
+[builder-host]
+build = 0launch http://0install.net/2007/interfaces/0release.xml --build-slave "$@"
+
+[builder-precise32]
+build = build-on-vm precise32-build-slave
+</pre></td></table>
+
+<p>
+  This defines two builders named "host" and "precise32". "host" simply runs 0release in build-slave mode on the local machine (in fact, you don't need to specify this section
+  because it exists by default). The "precise32" builder run a script (see <a href="#vagrant">below</a>) to bring up a VirtualBox virtual machine, submit the build to it, and then shut it down again.
+</p>
+
+<h3 id="idm39816802090752">The build command</h3>
+
+<p>
+  The build command is called with four arguments:
+</p>
+
+<ol>
+  <li>The name of the generated XML feed file for the source release candidate.</li>
+  <li>The name of the generated source archive.</li>
+  <li>The URL of the directory where the release will be hosted eventually.</li>
+  <li>The name of the binary feed to be generated.</li>
+</ol>
+
+<p>
+  The three names are of files in the current directory without the directory part; this simplifies the copying. The build command must do three things:
+</p>
+
+<ol>
+  <li>Copy the input files (the source feed and archive) to the build system.</li>
+  <li>Invoke "0release --build-slave" to do the build.</li>
+  <li>Copy the results (the binary feed and archive) back to the local system.</li>
+</ol>
+
+<h2 id="vagrant">Setting up a Vagrant build slave</h2>
+
+<p>
+  First, we'll need to create a "box" with the build system. <a href="http://docs.vagrantup.com/">Create a Vagrantfile</a> for the new box, e.g.
+</p>
+
+<pre>
+Vagrant::Config.run do |config|
+  config.vm.box = "precise32"
+  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+end
+</pre>
+
+<p>
+  The bring the machine up and install the basic build environment. The only
+  package required by 0release is 0install itself, but you must also install
+  any system packages that are needed by the software to be built (i.e. those
+  which can't be installed by 0install automatically):
+</p>
+
+<pre>
+vagrant up
+vagrant ssh -c 'sudo apt-get update &amp;&amp; 
+  sudo apt-get install -y zeroinstall-injector build-essential &amp;&amp;
+  mkdir -p ~vagrant/.cache/0install.net'
+</pre>
+
+<p>
+  Now package the VM into a new box and add it.
+  You might wish to create a Vagrantfile.pkg to enable a shared 0install cache (see <a href="virtual.html#vagrant">Sharing / Vagrant</a>).
+</p>
+
+<pre>
+vagrant package --vagrantfile Vagrantfile.pkg
+vagrant box add precise32-build-slave package.box
+</pre>
+
+<p>
+  Create the <b>build-on-vm</b> script, make it executable, and place it in your $PATH (on the host):
+</p>
+
+<pre>
+#!/bin/bash
+set -eux
+
+if [ -f Vagrantfile ]; then
+  vagrant destroy -f &amp;&amp; rm Vagrantfile
+fi
+
+vagrant init "$1"
+shift
+vagrant up
+vagrant ssh-config &gt; .ssh-config
+ssh -F .ssh-config default \
+  'cd /vagrant &amp;&amp; 0launch --not-before 0.10 \
+     http://0install.net/2007/interfaces/0release.xml \
+     --build-slave "$@"' "$@" &amp;&amp; \
+  vagrant destroy -f &amp;&amp; rm Vagrantfile
+</pre>
+
+<p>
+You can then use it in your <b>builders.conf</b>, as above.
+</p>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Linux</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html" class="selected">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="closed"><a href="packagers.html">For packagers 
+      </a></li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm24119298681952">
+<a name="packages"></a>Linux Packages</h2>
+
+<ol class="toc">
+<li><a href="#arch">Arch Linux</a></li>
+<li><a href="#debian">Debian / Knoppix / Mint / Ubuntu</a></li>
+<li><a href="#fedora">Fedora</a></li>
+<li><a href="#gentoo">Gentoo</a></li>
+<li><a href="#suse">OpenSUSE</a></li>
+<li><a href="#redhat">Red Hat</a></li>
+<li><a href="#slackware">Slackware</a></li>
+<li><a href="#generic">Generic binaries</a></li>
+</ol>
+
+<p>
+If a package for your distribution is listed above, install that and then <a href="users.html">try using it</a>!
+Otherwise, <a href="install-source.html">get the source package instead</a> or try the <a href="#generic">generic binaries</a>.
+</p>
+
+<h3 id="arch">Arch Linux</h3>
+
+<p>The most reliable option is to build from source:</p>
+
+<pre><b>pacman -Sy opam aspcud make m4 patch unzip gcc sed awk grep camlp4
+opam init --comp=4.04.1
+opam depext -i 0install
+eval $(opam config env)
+0install --version
+</b></pre>
+
+<p>The generic binary (see below) also works, but you need the old libcurl:</p>
+
+<pre><b>pacman -Sy wget tar libcurl-compat
+wget https://downloads.sourceforge.net/project/zero-install/0install/2.12.1/0install-linux-x86_64-2.12.1.tar.bz2
+tar xf 0install-linux-x86_64-2.12.1.tar.bz2
+cd 0install-linux-x86_64-2.12.1
+./install.sh local
+LD_PRELOAD=libcurl.so.3 0install --version
+</b></pre>
+
+<p>Finally, there is also the <a href="https://aur.archlinux.org/packages/zeroinstall-injector/">zeroinstall-injector AUR package</a>.</p>
+
+<h3 id="debian">Debian / Knoppix / Mint / Ubuntu</h3>
+
+<p>Zero Install is part of the main Debian archive, so you can get it with:</p>
+<pre># <b>apt-get install zeroinstall-injector</b></pre>
+
+<p><b>Ubuntu 12.04 LTS</b>: you may find a newer version works better: the <a href="http://packages.ubuntu.com/raring/zeroinstall-injector">Raring .deb</a> works fine.</p>
+
+<p>On Debian/unstable (since 2014-04-16), there is a "0install-core" package. This doesn't depend on any GUI components, which makes it more suitable for headless servers or small VMs. To install with minimal dependencies:</p>
+<pre># <b>apt-get install 0install-core --no-install-recommends</b></pre>
+
+<h3 id="fedora">Fedora</h3>
+Packages are in Fedora (thanks to Michel Alexandre Salim), so just do:
+<pre># <b>yum install 0install</b></pre>
+for the <a href="https://admin.fedoraproject.org/updates/search/0install">new OCaml RPM</a>, or:
+<pre># <b>yum install zeroinstall-injector</b></pre>
+for the <a href="http://koji.fedoraproject.org/koji/packageinfo?packageID=4282">older Python RPM</a> .
+<!-- <p>Newer versions are also available from the <a href='http://download.opensuse.org/repositories/home:/talex5/'>build service</a>.</p>-->
+
+<h3 id="gentoo">Gentoo</h3>
+
+<p><a href="http://packages.gentoo.org/package/rox-base/zeroinstall-injector">zeroinstall-injector</a> is in Gentoo (the version, 1.11, is very old though).</p>
+
+<h3 id="suse">OpenSUSE</h3>
+
+<p>A package is available from the main repository (since OpenSUSE 12.1):</p>
+  <p><a href="http://software.opensuse.org/package/zeroinstall-injector">Package in the OpenSUSE distribution</a></p>
+  <p>For older systems:</p>
+
+  <ul>
+    <li><a href="https://downloads.sourceforge.net/project/zero-install/injector/1.0/zeroinstall-injector-1.0-6.1sle11.i586.rpm">SLE 11 RPM</a></li>
+    <li><a href="https://downloads.sourceforge.net/project/zero-install/injector/1.0/zeroinstall-injector-1.0-1suse.noarch.rpm">OpenSUSE 11.4 RPM</a></li>
+  </ul>
+
+<h3 id="redhat">Red Hat</h3>
+  <ul>
+    <li>
+<a href="http://sourceforge.net/projects/zero-install/files/injector/0.35/zeroinstall-injector-0.35-4.1-RHEL5.noarch.rpm/download">RHEL 5 RPM</a> (0.35)</li>
+    <li>
+<a href="http://sourceforge.net/projects/zero-install/files/injector/1.10/zeroinstall-injector-1.10-50.1-RHEL6.noarch.rpm/download">RHEL 6 RPM</a> (1.10)</li>
+  </ul>
+  <p>A package is available in the <a href="http://fedoraproject.org/wiki/EPEL">Fedora Extra Packages for Enterprise Linux (EPEL)</a>:</p>
+<pre># <b>yum install zeroinstall-injector</b></pre>
+
+<h3 id="slackware">Slackware</h3>
+
+<p>Slackware packages are available from <a href="http://slackbuilds.org/repository/14.1/system/zeroinstall-injector/">slackbuilds.org</a>.</p>
+
+<h3 id="generic">Generic binaries</h3>
+
+<p>
+ There are some pre-compiled <a href="http://0install.net/tools/0install.xml">generic binaries</a> available. These
+ work on Linux-x86 (32-bit Linux), Linux-x86_64 (64-bit Linux), and Linux-armv6l (Raspberry Pi with Raspbian).</p>
+
+<p>
+  Download the appropriate archive for your system, unpack it, and run the <b>install.sh</b> script inside. You'll need libcurl installed (most systems have it by default).
+</p>
+
+<div class="quicklinks"><div class="row"><a href="users.html"><img src="tango/go-next.png" alt="" width="48" height="48"><br>Continue to tutorial</a></div></div>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

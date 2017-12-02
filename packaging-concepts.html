@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Concepts</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="open">
+<a href="packagers.html">For packagers 
+      </a><ul>
+<li class="open">
+<a href="injector-packagers.html">Packaging guide 
+      </a><ul>
+<li class="leaf"><a href="packaging-concepts.html" class="selected">Concepts 
+      </a></li>
+<li class="leaf"><a href="local-feeds.html">Local feeds 
+      </a></li>
+<li class="leaf"><a href="packaging-binaries.html">Packaging binaries 
+      </a></li>
+<li class="leaf"><a href="package-scons.html">0publish tutorial 
+      </a></li>
+<li class="leaf"><a href="injector-find.html">Example: Find 
+      </a></li>
+<li class="leaf"><a href="package-inkscape.html">Example: Inkscape 
+      </a></li>
+<li class="leaf"><a href="package-rox.html">Example: ROX-Filer 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="templates.html">Templates 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm23128718442976">Understanding 0install: concepts</h2>
+
+<h3 id="idm23128718396752">Interfaces</h3>
+<p>
+  An interface describes what something does (e.g. "Edit - a simple text editor").
+</p>
+<p>
+  In Zero Install, interfaces are named by globally unique URIs (like web
+  pages). Some examples of interfaces are:
+</p>
+<ul>
+  <li>http://rox.sourceforge.net/2005/interfaces/Edit</li>
+  <li>http://rox.sourceforge.net/2005/interfaces/ROX-Lib</li>
+</ul>
+
+<p>
+  When a user asks to run a program, they give the interface URI:
+</p>
+
+<pre>0launch http://rox.sourceforge.net/2005/interfaces/Edit</pre>
+
+<p>
+  When a program depends on a library, it gives library's interface URI:
+</p>
+
+<pre>
+&lt;requires interface="http://rox.sourceforge.net/2005/interfaces/ROX-Lib"&gt;
+</pre>
+
+<h3 id="idm23128718392304">Feed files</h3>
+<p>
+  A feed file is a list of implementations (versions) of an interface. It is called a feed because new
+  versions get added to it when they are released, just as news items are added to an RSS feed.
+</p>
+<p>
+  Usually an interface has only one feed file, located at the interface's URI.
+  Some examples of feeds are:
+</p>
+
+<ul>
+  <li><a href="http://rox.sourceforge.net/2005/interfaces/Edit">http://rox.sourceforge.net/2005/interfaces/Edit</a></li>
+  <li><a href="http://rox.sourceforge.net/2005/interfaces/ROX-Lib">http://rox.sourceforge.net/2005/interfaces/ROX-Lib</a></li>
+  <li>
+<b>/home/tal/dev/edit/Edit.xml</b> (a local feed)</li>
+</ul>
+
+<p>
+  You can add additional local and remote feeds to an interface. A <i>local feed</i>
+  is located locally on your machine, whereas a <i>remote feed</i> is located on the
+  web (even if it is cached on your machine).
+</p>
+
+<h3 id="idm23128718385984">Implementations</h3>
+<p>
+  An <i>implementation</i> is something that implements an interface. Edit-1.9.6 and Edit-1.9.7 are both implementations
+  of http://rox.sourceforge.net/2005/interfaces/Edit.
+</p>
+<p>
+  Each implementation of an interface is identified by a cryptographic digest, eg:
+</p>
+<ul>
+  <li><b>sha1=235cb9dd77ef78ef2a79abe98f1fcc404bba4889</b></li>
+  <li><b>sha1=c86d09f1113041f5eaaa8c3d1416fcf4dad8e2e0</b></li>
+</ul>
+
+<p>
+  For platform independent binaries (e.g. Python code) there will be one implementation for each version.
+  For compiled code, there will be one implementation per architecture per version.
+</p>
+
+<h3 id="idm23128718382064">Launching</h3>
+<p>
+  When you launch a program (like Edit) 0install looks up the feed files of the
+  interface and chooses an implementation of the interface and the interfaces
+  it depends on according to the policy settings (e.g. preferring "stable" or "testing"
+  implementations). 0install then downloads the implementations if they are
+  missing from the cache. Lastly, 0install uses environment variables (bindings)
+  to tell the program where to find its dependencies; this process
+  is known as <i>Dependency Injection</i> (or <i>Inversion of Control</i>).
+</p>
+
+<div class="quicklinks"><div class="row">
+<a href="injector-packagers.html"><img src="tango/go-prev.png" alt="" width="48" height="48"><br>Go back</a><a href="local-feeds.html"><img src="tango/go-next.png" alt="" width="48" height="48"><br>Continue</a>
+</div></div>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="logo/favicon.ico" type="image/vnd.microsoft.icon">
+<title>0install: Packaging guide</title>
+</head>
+<body><table>
+<tr>
+<td class="logo"><a href="/"><img src="logo/zeroinstall-icon.png" width="96" height="95" alt="logo"></a></td>
+<td class="header">
+<form id="searchbox_010445122533180311286:4ee7gv0f1pc" action="http://google.com/cse" style="float: right; padding-right: 1em;"><p><input type="hidden" name="cx" value="010445122533180311286:4ee7gv0f1pc"><input name="q" type="search" size="14"><input type="submit" name="sa" value="Search"><input type="hidden" name="cof" value="FORID:0"></p></form>
+<h1><a href="/">Zero Install</a></h1>
+<p class="tagline">the antidote to app-stores</p>
+</td>
+</tr>
+<tr>
+<td class="sidebar"><ul class="pages">
+<li class="open">
+<a href=".">Overview 
+      </a><ul>
+<li class="closed"><a href="why.html">About 0install 
+      </a></li>
+<li class="closed"><a href="features.html">Features 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="news.html">News 
+      </a><ul>
+<li class="leaf"><a href="0install-2.0.html">0install 2.0 
+      </a></li>
+<li class="leaf"><a href="roadmap.html">Roadmap 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="injector.html">Download 0install 
+      </a><ul>
+<li class="leaf"><a href="install-linux.html">Linux 
+      </a></li>
+<li class="closed"><a href="install-osx.html">OS X 
+      </a></li>
+<li class="closed"><a href="install-source.html">Source code 
+      </a></li>
+<li class="leaf"><a href="install-unix.html">Unix 
+      </a></li>
+<li class="leaf"><a href="install-windows.html">Windows 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="injector-feeds.html">Featured apps 
+      </a></li>
+<li class="open">
+<a href="doc.html">Documentation 
+      </a><ul>
+<li class="closed"><a href="users.html">For users 
+      </a></li>
+<li class="open">
+<a href="packagers.html">For packagers 
+      </a><ul>
+<li class="open">
+<a href="injector-packagers.html" class="selected">Packaging guide 
+      </a><ul>
+<li class="leaf"><a href="packaging-concepts.html">Concepts 
+      </a></li>
+<li class="leaf"><a href="local-feeds.html">Local feeds 
+      </a></li>
+<li class="leaf"><a href="packaging-binaries.html">Packaging binaries 
+      </a></li>
+<li class="leaf"><a href="package-scons.html">0publish tutorial 
+      </a></li>
+<li class="leaf"><a href="injector-find.html">Example: Find 
+      </a></li>
+<li class="leaf"><a href="package-inkscape.html">Example: Inkscape 
+      </a></li>
+<li class="leaf"><a href="package-rox.html">Example: ROX-Filer 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="templates.html">Templates 
+      </a></li>
+</ul>
+</li>
+<li class="closed"><a href="dev.html">For developers 
+      </a></li>
+<li class="closed"><a href="tools.html">Tool reference 
+      </a></li>
+<li class="closed"><a href="injector-specs.html">Specifications 
+      </a></li>
+</ul>
+</li>
+<li class="open">
+<a href="support.html">Support 
+      </a><ul>
+<li class="leaf"><a href="support.html#lists">Mailing lists 
+      </a></li>
+<li class="leaf"><a href="support.html#bugs">Bug tracker 
+      </a></li>
+<li class="leaf"><a href="faq.html">FAQ 
+      </a></li>
+<li class="leaf"><a href="injector-trouble.html">Troubleshooting 
+      </a></li>
+<li class="leaf"><a href="support.html#commercial">Commercial 
+      </a></li>
+</ul>
+</li>
+<li class="leaf"><a href="legal.html">Legal issues 
+      </a></li>
+<li class="leaf"><a href="https://github.com/0install">GitHub 
+      </a></li>
+<li class="leaf"><a href="http://sourceforge.net/project/showfiles.php?group_id=76468">SF file releases 
+      </a></li>
+</ul></td>
+<td class="main">
+<div class="main">
+
+<h2 id="idm23354778123344">Packaging guide</h2>
+
+<p>
+  To make software available through 0install, you need to publish a signed
+  "feed" XML file on your web page. This file lists the available versions and
+  their dependencies and says how to run the program. There are lots of ways to
+  create this XML file.
+</p>
+
+<p>
+  To see an example of the XML, go to any 0install program's feed in your browser
+  (e.g. <a href="http://0install.net/tools/0export.xml">0export</a>) and <i>View Page Source</i>.
+</p>
+
+<p>
+  Before you start, have a look at <a href="packaging-concepts.html">Understanding 0install: important concepts</a> to make
+  sure you understand some key terms and ideas.
+</p>
+
+<p><strong>I want to...</strong></p>
+
+<dt id="idm23354778118992">
+  <dt id="idm23354778118688">... publish an XML file for an existing binary release</dt>
+  <dd>
+    <ul>
+      <li>Read the <a href="packaging-binaries.html">binary packaging guide</a>. This tutorial shows how to create an XML
+	file describing the Blender 3D-animation application. The binary
+	archive is published by the upstream authors and requires no
+	modifications.
+      </li>
+    </ul>
+  </dd>
+
+  <dt id="idm23354778116160">... publish XML for a source release</dt>
+  <dd>
+    <ul>
+      <li>Start by reading the <a href="packaging-binaries.html">binary packaging guide</a>. Most of the steps are the same.</li>
+      <li>Read the <a href="0compile.html">0compile user guide</a> to understand how users compile 0install software.</li>
+      <li>Read the <a href="0compile-dev.html">0compile developer guide</a> for a tutorial showing how to publish the GNU Hello example package.</li>
+    </ul>
+  </dd>
+
+  <dt id="idm23354778111696">... create an XML file describing my own software</dt>
+  <dd>
+    <ul>
+      <li>Read the <a href="0release.html">0release</a> documentation, which shows how to add a <a href="local-feeds.html">local feed</a> to your source repository. Users can use this to run your program from a Git checkout, and you can use it to generate new releases automatically.</li>
+      <li>Have a look at the <a href="templates.html">template projects</a> for examples in various programming languages (Python, Java, C).</li>
+    </ul>
+  </dd>
+</dt>
+
+<h2 id="idm23354778107232">Other useful documentation</h2>
+
+<dl>
+ <dt id="idm23354778106544"><a href="interface-spec.html">Feed specification</a></dt>
+ <dd>The specification of the XML format.</dd>
+
+ <dt id="idm23354778105296"><a href="tools.html">Tools</a></dt>
+ <dd>An index of the tools provided by the 0install project for generating feeds.</dd>
+
+ <dt id="idm23354778104096"><a href="https://opam.ocaml.org/blog/0install-intro/">Binary distribution with 0install</a></dt>
+ <dd>Blog article describing how to make packages using the <a href="0template.html">0template</a> command-line tool.</dd>
+</dl>
+
+</div>
+<div class="footer">
+<p>
+	    Web-site © Copyright 2003-2015 Thomas Leonard and others<br></p>
+<p>
+	    Permission is granted to use the site (excluding the software,
+	    which is licensed separately)<br>in accordance with the terms of the
+	    <a href="http://creativecommons.org/licenses/by-sa/2.5/">Creative
+	    Commons Attribution-ShareAlike 2.5 license</a>.
+	  </p>
+<p>
+	    Some of the icons are from (or based on icons from) the
+	    <a href="http://tango.freedesktop.org/Tango_Desktop_Project">Tango Desktop Project</a> and the <a href="http://www.openclipart.org/">Open Clipart Library</a>.
+	  </p>
+<span class="logos"><a href="http://creativecommons.org/licenses/by-sa/2.5/"><img src="http://creativecommons.org/images/public/somerights20.gif" alt="Attribution-ShareAlike" width="88" height="31"></a></span>
+</div>
+</td>
+</tr>
+</table></body>
+</html>
